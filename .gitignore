@@ -1,0 +1,5 @@
+/.vagrant/
+/.idea/
+/deployed/
+/vendor/
+/composer.lock
