@@ -29,7 +29,7 @@ class IndexView extends HtmlView
                             <label for="password">Parole</label>
                             <input type="password" id="password">
                         </div>
-                        <button id="log-in">Ien?kt</button>
+                        <button id="log-in">Ienākt</button>
                     </div>
                 </div>
             </div>
