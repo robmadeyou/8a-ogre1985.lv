@@ -12,11 +12,27 @@ class IndexView extends HtmlView
         parent::printViewContent();
 
         $htmlPageSettings = new HtmlPageSettings();
-        $htmlPageSettings->PageTitle = "You're up and running!";
+        $htmlPageSettings->PageTitle = "";
 
         ?>
-        <p>Add more URLs by configuring URL Handlers in the settings/app.config.php file</p>
-
+            <div id="login-panel">
+                <div id="login-panel-bg"></div>
+                <div id="login-panel-fg">
+                    <h1>Sveiki!</h1>
+                    <p>Ielogoties seit</p>
+                    <div id="inputs">
+                        <div class="__group">
+                            <label for="name">Vards</label>
+                            <input type="text" id="name">
+                        </div>
+                        <div class="__group">
+                            <label for="password">Parole</label>
+                            <input type="password" id="password">
+                        </div>
+                        <button id="log-in">Ien?kt</button>
+                    </div>
+                </div>
+            </div>
         <?php
     }
 }

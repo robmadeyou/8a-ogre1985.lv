@@ -1,13 +1,111 @@
-body
-{
+body, #login-panel-bg {
+    background-image: url('/static/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-position: center top -500px;
     margin: 0;
 }
 
-#top {
-    height: 150px;
-    background: salmon;
+#login-panel {
+    text-align: center;
+    margin-top: 250px;
+    position: relative;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    max-width: 400px;
+
+    color: #fefefe;
+    z-index: 98;
+
 }
 
-#top,#content,#tail {
-    padding: 10px;
+#login-panel-bg {
+    /* Absolutely position it, but stretch it to all four corners, then put it just behind #search's z-index */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+
+    /* Pull the background 70px higher to the same place as #bg's */
+    background-position: center -750px;
+    -webkit-filter: blur(5px);
+    filter:blur('/static/media/blur.svg#blur');
+    filter: blur(5px);
+}
+
+#login-panel-fg {
+    /* Put this on top of the blurred layer */
+    position: relative;
+    z-index: 100;
+    padding: 20px 20px 60px 20px;
+    background: rgb(34,34,34); /* for IE */
+    background: rgba(34,34,34, 0.66);
+    overflow: auto;
+
+    -webkit-transition: background 0.2s;
+    -moz-transition: background 0.2s;
+    -ms-transition: background 0.2s;
+    -o-transition: background 0.2s;
+    transition: background 0.2s;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#login-panel-fg:hover
+{
+    background: rgba(34,34,34, 0.86);
+}
+
+
+.__group
+{
+    margin-top: 5px;
+    width: 100%;
+    float: left;
+}
+
+.__group label
+{
+    margin-left: 20px;
+    float: left;
+    width: 40px;
+}
+
+#log-in
+{
+    margin-top: 10px;
+}
+
+@media (max-width: 600px ) {
+    #login-panel {
+        margin-top: 50px;
+        width: 100%;
+    }
+    #login-panel-bg {
+        background-position: center -550px;
+    }
+}
+
+@media (max-width: 1920px )
+{
+    body, #login-panel-bg {
+        background-image: url('/static/images/background.jpg');
+        background-repeat: no-repeat;
+        background-size: 1980px auto;
+    }
+}
+
+@media (max-width: 4000px )
+{
+
 }
