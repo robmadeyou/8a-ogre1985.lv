@@ -1,6 +1,6 @@
 <?php
 
-namespace Your\WebApp\Presenters;
+namespace \Presenters;
 
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Views\HtmlView;
