@@ -6,7 +6,10 @@ use Rhubarb\Crown\Encryption\HashProvider;
 use Rhubarb\Crown\Layout\LayoutModule;
 use Rhubarb\Crown\Module;
 use Rhubarb\Crown\UrlHandlers\ClassMappedUrlHandler;
+use Rhubarb\Patterns\Mvp\Crud\CrudUrlHandler;
 use Rhubarb\Scaffolds\AuthenticationWithRoles\AuthenticationWithRolesModule;
+use Rhubarb\Stem\Repositories\Repository;
+use Rhubarb\Stem\Schema\SolutionSchema;
 
 class YourAppModule extends Module
 {
@@ -14,7 +17,10 @@ class YourAppModule extends Module
     {
         parent::initialise();
 
+        Repository::SetDefaultRepositoryClassName( 'Rhubarb\Stem\Repositories\MySql\Mysql' );
         include_once( "settings/site.config.php" );
+
+        SolutionSchema::registerSchema( 'Default', 'Your\WebApp\Model\DefaultSolutionSchema' );
     }
 
     protected function registerUrlHandlers()
@@ -30,8 +36,12 @@ class YourAppModule extends Module
 
         $this->addUrlHandlers(
             [
-                "/" => new ClassMappedUrlHandler( '\Your\WebApp\Presenters\IndexPresenter' ),
-                $login
+                "/" => new ClassMappedUrlHandler( '\Your\WebApp\Presenters\IndexPresenter', [
+                    'portal/' => new ClassMappedUrlHandler( 'Your\WebApp\Presenters\Portal\PortalPresenter', [
+                        'discussion/' => new CrudUrlHandler( 'Discussion', 'Your\WebApp\Presenters\Discussion' )
+                    ] ),
+                ] ),
+                "/login/" => $login,
             ]
         );
     }

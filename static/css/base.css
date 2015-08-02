@@ -1,3 +1,18 @@
+@font-face {
+    font-family: LeagueGothic;
+    src: url(/static/media/fonts/LeagueGothic-Regular.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(/static/media/fonts/OpenSans-Light.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body, #login-panel-bg {
     background-image: url('/static/images/background.jpg');
     background-repeat: no-repeat;
@@ -104,3 +119,79 @@ body {
         background-size: 1980px auto;
     }
 }
+
+#portal-body
+{
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    background-color: white;
+
+    padding: 10px 0 50px 0;
+
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+
+    border-left: 1px #5b5b5b solid;
+    border-right: 1px #5b5b5b solid;
+    border-bottom: 1px #5b5b5b solid;
+}
+
+#portal-title
+{
+    width: 100%;
+    min-height: 50px;
+    max-height: 100px;
+
+    padding-bottom: 10px;
+    border-bottom: 2px black solid;
+}
+
+#title
+{
+    float: left;
+    font-family: OpenSans;
+    font-size: 25px;
+    padding-top: 0;
+    padding-left: 50px;
+    font-weight: lighter;
+}
+
+#title h1
+{
+    margin-top: -10px;
+}
+
+#portal-title-actions
+{
+    float: right;
+    padding-right: 50px;
+}
+
+#portal-navbar
+{
+    border-bottom: 2px black solid;
+    height: 43px;
+}
+
+.discussion-thumbnail
+{
+    float:left;
+    width: 200px;
+    height: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+#discussion-full-width img, .discussion-thumbnail img
+{
+    width: 100%;
+    height:100%;
+}
+
+

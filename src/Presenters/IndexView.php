@@ -3,7 +3,6 @@
 namespace Your\WebApp\Presenters;
 
 use Rhubarb\Crown\Settings\HtmlPageSettings;
-use Rhubarb\Leaf\Presenters\Controls\Buttons\Button;
 use Rhubarb\Leaf\Presenters\Controls\Text\Password\Password;
 use Rhubarb\Leaf\Presenters\Controls\Text\TextBox\TextBox;
 use Rhubarb\Leaf\Views\JQueryView;
