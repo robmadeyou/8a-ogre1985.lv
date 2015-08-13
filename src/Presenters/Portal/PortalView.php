@@ -3,8 +3,10 @@
 namespace Your\WebApp\Presenters\Portal;
 
 use Rhubarb\Leaf\Views\JQueryView;
-use Your\WebApp\Controllers\DiscussionPresenter;
-use Your\WebApp\Model\Discussion;
+use Rhubarb\Stem\Repositories\MySql\MySql;
+use Your\WebApp\Controllers\GalleryController\GalleryPresenter;
+use Your\WebApp\Controllers\ImagePanorama\ImagePanorama;
+use Your\WebApp\Model\Gallery;
 
 class PortalView extends JQueryView
 {
@@ -12,14 +14,26 @@ class PortalView extends JQueryView
     {
         parent::printViewContent();
 
-        $discussions = Discussion::find();
+        $discussions = Gallery::find();
+
+        $sql = MySql::executeStatement( 'SELECT Source FROM tblImage' );
+
+        $images = [];
+
+        while($a = $sql->fetch( \PDO::FETCH_ASSOC ) )
+        {
+            $images[] = $a['Source'];
+        }
 
         ?>
+        <div class="portal-image-gallery">
+            <?= new ImagePanorama( $images )?>
+        </div>
         <div class="discussion-group">
             <?php
             foreach( $discussions as $discussion )
             {
-                print new DiscussionPresenter( $discussion );
+                print new GalleryPresenter( $discussion );
             }
             ?>
         </div>

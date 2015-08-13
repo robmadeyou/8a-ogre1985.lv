@@ -21,22 +21,16 @@ class PortalLayout extends BaseLayout
                 background-image: url("/static/images/background-blur.jpg");
             }
         </style>
-        <div id="top">
-        </div>
         <div id="content">
             <div id="portal-body">
                 <div id="portal-title">
                     <div id="title">
-                        <h1>Ogres Vidusskolas 8a klasse</h1>
+                        <h1>Ogres Vidusskolas 8a klase</h1>
                     </div>
-
                     <div id="portal-title-actions">
                         <a href="profile/">Mans Profils</a> |
                         <a href="logout/">Iziet</a>
                     </div>
-                </div>
-                <div id="portal-navbar">
-                    TODO navbar
                 </div>
                 <?php
                 parent::printPageHeading();

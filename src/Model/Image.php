@@ -10,7 +10,7 @@ use Rhubarb\Stem\Schema\Columns\Integer;
 use Rhubarb\Stem\Schema\Columns\String;
 use Rhubarb\Stem\Schema\ModelSchema;
 
-class Discussion extends Model
+class Image extends Model
 {
 
     /**
@@ -20,12 +20,13 @@ class Discussion extends Model
      */
     protected function createSchema()
     {
-        $schema = new ModelSchema( 'tblDiscussion' );
+        $schema = new ModelSchema( 'tblImage' );
 
         $schema->addColumn(
-            new AutoIncrement( 'DiscussionID' ),
-            new String( 'ImageSource', 200 ),
-            new String( 'ImageThumbnailSource', 200 ),
+            new AutoIncrement( 'ImageID' ),
+            new Integer( 'GalleryID' ),
+            new String( 'Source', 200 ),
+            new String( 'Thumbnail', 200 ),
             new Integer( 'UploadedBy' ),
             new DateTime( 'UploadedAt' ),
             new DateTime( 'LastUpdatedAt' )
@@ -34,9 +35,6 @@ class Discussion extends Model
         return $schema;
     }
 
-    /**
-     * Override this to make changes just before the model is committed to the repository during a save operation
-     */
     protected function beforeSave()
     {
         $this->LastUpdatedBy = new RhubarbDateTime();

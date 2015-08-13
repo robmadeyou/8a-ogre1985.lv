@@ -6,10 +6,12 @@ use Rhubarb\Stem\Schema\SolutionSchema;
 
 class DefaultSolutionSchema extends SolutionSchema
 {
-    public function __construct( $version = 1.2 )
+    public function __construct( $version = 1.31 )
     {
         parent::__construct( $version );
 
-        $this->addModel( 'Discussion', Discussion::class );
+        $this->addModel( 'Image',      Image::class );
+        $this->addModel( 'Comment',    Comment::class );
+        $this->addModel( 'Gallery',    Gallery::class );
     }
 }

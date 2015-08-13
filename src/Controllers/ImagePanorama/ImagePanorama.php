@@ -1,13 +1,19 @@
 <?php
 
-namespace Your\WebApp\Presenters\Discussion;
+namespace Your\WebApp\Controllers\ImagePanorama;
 
-use Rhubarb\Crown\Layout\LayoutModule;
 use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
-use Your\WebApp\Layouts\PortalLayout;
 
-class DiscussionItemPresenter extends ModelFormPresenter
+class ImagePanorama extends ModelFormPresenter
 {
+    private $imgs = [];
+
+    public function __construct( $imageUrls, $name = "")
+    {
+        parent::__construct($name);
+        $this->imgs = $imageUrls;
+    }
+
     /**
      * Called to create and register the view.
      *
@@ -18,8 +24,7 @@ class DiscussionItemPresenter extends ModelFormPresenter
      */
     protected function createView()
     {
-        LayoutModule::setLayoutClassName( PortalLayout::class );
-        return new DiscussionItemView();
+        return new ImagePanoramaView( $this->imgs );
     }
 
 }

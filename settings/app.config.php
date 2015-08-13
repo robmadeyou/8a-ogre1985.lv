@@ -39,7 +39,7 @@ class YourAppModule extends Module
             [
                 "/" => new ClassMappedUrlHandler( '\Your\WebApp\Presenters\IndexPresenter', [
                     'portal/' => new ClassMappedUrlHandler( 'Your\WebApp\Presenters\Portal\PortalPresenter', [
-                        'discussion/' => new CrudUrlHandler( 'Discussion', 'Your\WebApp\Presenters\Discussion' )
+                        'gallery/' => new CrudUrlHandler( 'Gallery', 'Your\WebApp\Presenters\Gallery' )
                     ] ),
                 ] ),
                 "/login/" => $login,

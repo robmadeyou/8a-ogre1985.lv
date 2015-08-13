@@ -25,12 +25,15 @@ class Comment extends Model
 
         $schema->addColumn(
             new AutoIncrement( 'CommentID' ),
+            new Integer( 'ImageID' ),
             new MySqlMediumText( 'Comment' ),
             new Integer( 'PostedBy' ),
             new DateTime( 'PostedAt' ),
             new Integer( 'ForComment' ),
             new Integer( 'InReplyTo' )
         );
+
+        return $schema;
     }
 
     /**

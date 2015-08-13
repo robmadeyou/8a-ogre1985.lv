@@ -1,20 +1,18 @@
 <?php
 
-namespace Your\WebApp\Presenters\Discussion;
+namespace Your\WebApp\Presenters\Gallery;
 
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Controls\FileUpload\DragAndDropFileUploadPresenter;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
 use Rhubarb\Scaffolds\Authentication\LoginProvider;
-use Your\WebApp\Model\Discussion;
+use Your\WebApp\Model\Image;
 
-class DiscussionAddView extends CrudView
+class GalleryAddView extends CrudView
 {
-    /**
-     * Called to allow a view to instantiate any sub presenters that may be needed.
-     *
-     * Called by the presenter when it is ready to receive any corresponding events.
-     */
+
+    public static $createdImagesForGallery = [];
+
     public function createPresenters()
     {
         parent::createPresenters();
@@ -32,25 +30,27 @@ class DiscussionAddView extends CrudView
 
                 $info = pathinfo( $file );
 
-                $discussion = new Discussion();
+                $discussion = new Image();
                 $discussion->UploadedBy = $user->UserID;
                 $discussion->save();
 
-                $discussion->ImageSource = '/static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ];
-                $discussion->ImageThumbnailSource = '/static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ];
+                $discussion->Source = '/static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ];
 
                 if (!is_dir( 'static/images/uploaded/' )) {
                     mkdir( 'static/images/uploaded', 0777, true );
                 }
+                $discussion->save();
 
                 rename( $location,
                     'static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ] );
-                $discussion->save();
+
+                self::$createdImagesForGallery[] = $discussion->ImageID;
             }
         });
 
         $this->addPresenters(
-            $upload
+            $upload,
+            "Title"
         );
     }
 
@@ -61,7 +61,9 @@ class DiscussionAddView extends CrudView
 
         $this->printFieldset( "", [
             "Image",
+            "Title",
             $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
         ]);
     }
+
 }

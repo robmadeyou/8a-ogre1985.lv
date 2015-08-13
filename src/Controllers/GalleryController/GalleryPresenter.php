@@ -1,16 +1,16 @@
 <?php
 
-namespace Your\WebApp\Controllers;
+namespace Your\WebApp\Controllers\GalleryController;
 
 
 use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
 
-class DiscussionPresenter extends ModelFormPresenter
+class GalleryPresenter extends ModelFormPresenter
 {
-    private $discussion;
-    public function __construct( $discussion )
+    private $gallery;
+    public function __construct( $gallery )
     {
-        $this->discussion = $discussion;
+        $this->gallery = $gallery;
         parent::__construct( "" );
     }
 
@@ -24,12 +24,12 @@ class DiscussionPresenter extends ModelFormPresenter
      */
     protected function createView()
     {
-        return new DiscussionView();
+        return new GalleryView();
     }
 
     protected function configureView()
     {
-        $this->view->discussion = $this->discussion;
+        $this->view->gallery = $this->gallery;
         return parent::configureView();
     }
 
