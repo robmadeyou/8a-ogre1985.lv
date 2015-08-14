@@ -25,6 +25,7 @@ class ImagePanoramaView extends JQueryView
         $smallWidth = 100 / sizeof( $this->images );
         ?>
             <div class="image-panorama">
+                <div style="display: none;" id="max-gallery-elements"><?= sizeof( $this->images ) - 1?></div>
                 <div class="image-panorama-images" style="width: <?= $largeWidth?>%;">
                     <?php
                         foreach( $this->images as $img )
