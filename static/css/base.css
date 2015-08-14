@@ -215,7 +215,20 @@ body {
 .image-panorama-navigation
 {
     position: relative;
-    top: 0;;
+    top: -34vw;
+}
+
+.image-panorama-navigation button
+{
+    height: 34vw;
+    width: 50px;
+    opacity: 0.4;
+    transition: opacity 0.4s;
+}
+
+.image-panorama-navigation button:hover
+{
+    opacity: 1;
 }
 
 .image-panorama-prev

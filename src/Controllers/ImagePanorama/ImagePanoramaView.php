@@ -35,8 +35,8 @@ class ImagePanoramaView extends JQueryView
                     ?>
                 </div>
                 <div class="image-panorama-navigation">
-                    <a href="#" class="image-panorama-prev">Prev</a>
-                    <a href="#" class="image-panorama-next">Next</a>
+                    <button class="image-panorama-prev">Prev</button>
+                    <button class="image-panorama-next">Next</button>
                 </div>
             </div>
         <?php

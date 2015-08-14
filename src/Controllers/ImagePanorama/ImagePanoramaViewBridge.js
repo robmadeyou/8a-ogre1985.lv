@@ -11,6 +11,13 @@ bridge.prototype.attachEvents = function () {
 	var current = 0;
 	var mouseOver = false;
 
+	$( '.image-panorama').hover( function()
+	{
+		mouseOver = true;
+	}, function()
+	{
+		mouseOver = false;
+	});
     $( document ).ready( function()
     {
 
