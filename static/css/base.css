@@ -15,6 +15,7 @@
 
 body, #login-panel-bg {
     background-image: url('/static/images/background.jpg');
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% auto;
     font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -210,6 +211,7 @@ body {
 .image-panorama-images
 {
     max-width: none!important;
+    height: 100%;
 }
 
 .image-panorama-navigation
@@ -241,7 +243,27 @@ body {
     float: right;
 }
 
-.image-panorama-images img
+.image-panorama-image-container
+{
+    float: left;
+    text-align: center;
+    height: 100%;
+}
+
+.image-panorama-image-container img
+{
+    height: 100%;
+}
+
+.image-single-view
+{
+    width: 100%;
+    text-align: center;
+    max-height: 34vw;
+    background-color: #a2a2a2;
+}
+
+.image-single-view img
 {
     height: 100%;
 }

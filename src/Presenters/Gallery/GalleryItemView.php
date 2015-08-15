@@ -20,7 +20,7 @@ class GalleryItemView extends CrudView
 
         foreach( $images as $img )
         {
-            print '<img src="' . $img->Source . '" style="width:150px; height: 150px;"> ';
+            print '<a href="/portal/image/' . $img->ImageID . '/"><img src="' . $img->Source . '" style="width:150px; height: 150px;"></a>';
         }
     }
 }

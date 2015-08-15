@@ -30,7 +30,7 @@ class ImagePanoramaView extends JQueryView
                     <?php
                         foreach( $this->images as $img )
                         {
-                            print '<img src="' . $img . '" style="width:'.$smallWidth.'%">';
+                            print '<div class="image-panorama-image-container" style="width:'.$smallWidth.'%"><img src="' . $img . '"></div>';
                         }
                     ?>
                 </div>

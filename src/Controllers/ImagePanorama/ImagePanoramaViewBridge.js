@@ -67,7 +67,7 @@ bridge.prototype.attachEvents = function () {
 		$( '.image-panorama-images' ).animate( { 'margin-left': '-' + ( index * 100 ) +'%' }, speed );
 	}
 
-	loopOver();
+	//loopOver();
 	function loopOver()
 	{
 		setTimeout( loopOver, 5000 );
