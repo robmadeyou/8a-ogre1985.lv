@@ -4,6 +4,7 @@ namespace Your\WebApp\Layouts;
 
 use Rhubarb\Crown\Html\ResourceLoader;
 use Rhubarb\Patterns\Layouts\BaseLayout;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 
 class PortalLayout extends BaseLayout
 {
@@ -28,7 +29,7 @@ class PortalLayout extends BaseLayout
                         <h1>Ogres Vidusskolas 8a klase</h1>
                     </div>
                     <div id="portal-title-actions">
-                        <a href="profile/">Mans Profils</a> |
+                        <a href="/users/">Mans Profils</a> |
                         <a href="logout/">Iziet</a>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace Your\WebApp\Presenters;
 use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
 use Rhubarb\Scaffolds\Authentication\LoginProvider;
 use Rhubarb\Scaffolds\AuthenticationWithRoles\User;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 
 class IndexPresenter extends ModelFormPresenter
 {
@@ -29,7 +30,7 @@ class IndexPresenter extends ModelFormPresenter
             }
             try
             {
-                $providerName = LoginProvider::getDefaultLoginProviderClassName();
+                $providerName = CustomLoginProvider ::getDefaultLoginProviderClassName();
                 $login = new $providerName();
                 if( $login->login( $uname, $pass ) )
                 {

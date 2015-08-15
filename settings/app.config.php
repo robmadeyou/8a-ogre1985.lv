@@ -11,6 +11,7 @@ use Rhubarb\Scaffolds\AuthenticationWithRoles\AuthenticationWithRolesModule;
 use Rhubarb\Stem\Repositories\MySql\MySql;
 use Rhubarb\Stem\Repositories\Repository;
 use Rhubarb\Stem\Schema\SolutionSchema;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 
 class YourAppModule extends Module
 {
@@ -42,6 +43,7 @@ class YourAppModule extends Module
                         'gallery/' => new CrudUrlHandler( 'Gallery', 'Your\WebApp\Presenters\Gallery' ),
                         'image/'  => new CrudUrlHandler( 'Image', 'Your\WebApp\Presenters\Image' )
                     ] ),
+                    'users/' => new CrudUrlHandler( 'CustomUser', 'Your\WebApp\Presenters\MyProfile' )
                 ] ),
                 "/login/" => $login,
             ]
@@ -51,7 +53,7 @@ class YourAppModule extends Module
     protected function registerDependantModules()
     {
         Module::registerModule( new LayoutModule( '\Your\WebApp\Layouts\DefaultLayout' ) );
-        Module::registerModule( new AuthenticationWithRolesModule( 'Rhubarb\Scaffolds\Authentication\LoginProvider' ) );
+        Module::registerModule( new AuthenticationWithRolesModule( CustomLoginProvider::class ) );
         HashProvider::setHashProviderClassName( 'Rhubarb\Crown\Encryption\Sha512HashProvider' );
     }
 }
