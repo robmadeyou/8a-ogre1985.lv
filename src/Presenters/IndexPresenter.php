@@ -2,13 +2,30 @@
 
 namespace Your\WebApp\Presenters;
 
+use Rhubarb\Crown\Exceptions\ForceResponseException;
+use Rhubarb\Crown\LoginProviders\Exceptions\NotLoggedInException;
+use Rhubarb\Crown\Response\RedirectResponse;
 use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
-use Rhubarb\Scaffolds\Authentication\LoginProvider;
 use Rhubarb\Scaffolds\AuthenticationWithRoles\User;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 
 class IndexPresenter extends ModelFormPresenter
 {
+    public function __construct($name = "")
+    {
+        try
+        {
+            $user = CustomLoginProvider::getLoggedInUser();
+            throw new ForceResponseException( new RedirectResponse( '/portal/' ) );
+        }
+        catch( NotLoggedInException $ex )
+        {
+
+        }
+
+        parent::__construct($name);
+    }
+
     protected function createView()
     {
         return new IndexView();

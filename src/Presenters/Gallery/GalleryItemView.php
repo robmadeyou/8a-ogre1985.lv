@@ -5,6 +5,8 @@ namespace Your\WebApp\Presenters\Gallery;
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
 use Rhubarb\Stem\Filters\Equals;
+use Rhubarb\Stem\Repositories\MySql\MySql;
+use Your\WebApp\Controllers\ImagePanorama\ImageCommentsPanorama;
 use Your\WebApp\Model\Image;
 
 class GalleryItemView extends CrudView
@@ -14,13 +16,9 @@ class GalleryItemView extends CrudView
         $model = $this->raiseEvent( 'GetRestModel' );
 
         $html = new HtmlPageSettings();
-        $html->PageTitle = $model->Title;
+        $html->PageTitle = htmlspecialchars( $model->Title );
 
-        $images = Image::find( new Equals( 'GalleryID', $model->GalleryID ) );
-
-        foreach( $images as $img )
-        {
-            print '<a href="/portal/image/' . $img->ImageID . '/"><img src="' . $img->Source . '" style="width:150px; height: 150px;"></a>';
-        }
+        $slideView = new ImageCommentsPanorama( Image::find( new Equals( 'GalleryID', $model->GalleryID ) ) );
+        print $slideView;
     }
 }

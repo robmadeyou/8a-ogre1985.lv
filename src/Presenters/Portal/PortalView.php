@@ -26,9 +26,7 @@ class PortalView extends JQueryView
         }
 
         ?>
-        <div class="portal-image-gallery">
             <?= new ImagePanorama( $images )?>
-        </div>
         <div class="discussion-group">
             <?php
             foreach( $discussions as $discussion )

@@ -268,3 +268,41 @@ body {
     height: 100%;
 }
 
+.gallery-collection-images
+{
+    white-space: nowrap;
+    overflow: hidden;
+    height: 120px;
+    max-width: none !important;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 10px;
+}
+
+.gallery-collection-images ul
+{
+    height: 100px;
+    width: 100px;
+}
+
+.gallery-collection-images ul li
+{
+    display: inline;
+    margin-left: 5px;
+}
+
+.gallery-collection-images ul li img
+{
+    height: 100%;
+}
+
+.thumbnail-image
+{
+    
+}
+
+.thumbnail-image.selected
+{
+    border: 2px orange solid;
+}
+

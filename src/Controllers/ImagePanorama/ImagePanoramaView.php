@@ -10,35 +10,52 @@ class ImagePanoramaView extends JQueryView
 
     use WithJqueryViewBridgeTrait;
 
-    private $images = [];
+    public $images = [],
+            $largeWidth,
+            $smallWidth;
     /**
      *
      */
     function __construct( $images )
     {
         $this->images = $images;
+        $this->largeWidth = 100 * sizeof( $images );
+        $this->smallWidth = 100 / sizeof( $images );
     }
 
     protected function printViewContent()
     {
-        $largeWidth = 100 * sizeof( $this->images );
-        $smallWidth = 100 / sizeof( $this->images );
+
         ?>
+         <div class="portal-image-gallery">
             <div class="image-panorama">
                 <div style="display: none;" id="max-gallery-elements"><?= sizeof( $this->images ) - 1?></div>
-                <div class="image-panorama-images" style="width: <?= $largeWidth?>%;">
+                <div class="image-panorama-images" style="width: <?= $this->largeWidth?>%;">
                     <?php
                         foreach( $this->images as $img )
                         {
-                            print '<div class="image-panorama-image-container" style="width:'.$smallWidth.'%"><img src="' . $img . '"></div>';
+                            $this->printImage( $img );
                         }
                     ?>
                 </div>
                 <div class="image-panorama-navigation">
-                    <button class="image-panorama-prev">Prev</button>
-                    <button class="image-panorama-next">Next</button>
+                    <?= $this->printNavigationbuttons() ?>
                 </div>
             </div>
+         </div>
+        <?php
+    }
+
+    protected function printImage( $img )
+    {
+        print '<div class="image-panorama-image-container" style="width:'.$this->smallWidth.'%"><img src="' . $img . '"></div>';
+    }
+
+    protected function printNavigationbuttons()
+    {
+        ?>
+            <button class="image-panorama-prev">Prev</button>
+            <button class="image-panorama-next">Next</button>
         <?php
     }
 

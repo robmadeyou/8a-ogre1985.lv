@@ -16,7 +16,7 @@ class GalleryView extends HtmlView
     {
         ?>
             <div class="gallery-thumbnail">
-                <p class="gallery-title"><?= $this->gallery->Title ?></p>
+                <p class="gallery-title"><?= htmlspecialchars( $this->gallery->Title ) ?></p>
                 <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><img src="<?= $this->gallery->getDefaultImage() ?>"></a>
             </div>
         <?php

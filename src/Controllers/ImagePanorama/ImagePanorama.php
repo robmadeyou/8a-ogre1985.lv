@@ -6,7 +6,7 @@ use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
 
 class ImagePanorama extends ModelFormPresenter
 {
-    private $imgs = [];
+    protected $imgs = [];
 
     public function __construct( $imageUrls, $name = "")
     {
