@@ -2,6 +2,8 @@
 
 namespace Your\WebApp\Controllers\ImagePanorama;
 
+use Your\WebApp\LoginProviders\CustomLoginProvider;
+use Your\WebApp\Model\Comment;
 use Your\WebApp\Model\Image;
 
 class ImageCommentsPanorama extends ImagePanorama
@@ -18,7 +20,30 @@ class ImageCommentsPanorama extends ImagePanorama
 
     protected function createView()
     {
-        return new ImageCommentsPanoramaView( $this->imgs );
+        $view =new ImageCommentsPanoramaView( $this->imgs );
+
+        $view->attachEventHandler( 'PostComment', function( $commentText, $imageID )
+        {
+            $comment = new Comment();
+            $comment->ImageID = $imageID;
+            $comment->Comment = $commentText;
+            $comment->PostedBy = CustomLoginProvider::getLoggedInUser()->UserID;
+            $comment->save();
+            print "yoyoyoy";
+            return "AAAAAAAAAAAAAA";
+        });
+
+        $view->attachEventHandler( 'stuff', function()
+        {
+            return "bob";
+        });
+
+        return $view;
     }
 
+    protected function configureView()
+    {
+
+        return parent::configureView();
+    }
 }

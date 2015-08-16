@@ -3,12 +3,9 @@
 namespace Your\WebApp\Controllers\ImagePanorama;
 
 use Rhubarb\Leaf\Views\JQueryView;
-use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
 
 class ImagePanoramaView extends JQueryView
 {
-
-    use WithJqueryViewBridgeTrait;
 
     public $images = [],
             $largeWidth,
@@ -59,13 +56,4 @@ class ImagePanoramaView extends JQueryView
         <?php
     }
 
-    /**
-     * Implement this and return __DIR__ when your ViewBridge.js is in the same folder as your class
-     *
-     * @returns string Path to your ViewBridge.js file
-     */
-    public function getDeploymentPackageDirectory()
-    {
-        return __DIR__;
-    }
 }

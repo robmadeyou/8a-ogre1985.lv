@@ -294,6 +294,7 @@ body {
 .gallery-collection-images ul li img
 {
     height: 100%;
+    cursor: pointer;
 }
 
 .thumbnail-image

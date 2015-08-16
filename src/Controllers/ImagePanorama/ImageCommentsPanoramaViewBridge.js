@@ -9,6 +9,8 @@ bridge.prototype.attachEvents = function () {
     var max = parseInt( $( '#max-gallery-elements' ).html() );
     var current = 0;
     var mouseOver = false;
+    var self = this;
+    var selectedImageID = $( $( '.thumbnail-image' )[0] ).attr( 'imgID' );
 
     $( '.image-panorama').hover( function()
     {
@@ -33,13 +35,30 @@ bridge.prototype.attachEvents = function () {
         })
     });
 
+    self.raiseServerEvent( 'stuff', function( a )
+    {
+        alert( a );
+    });
+
     $( '.thumbnail-image' ).click( function( event )
     {
         clearSelected( 'thumbnail-image' );
         $( this ).addClass( 'selected' );
+        selectedImageID = $( this).attr( 'imgID' );
 
         var id = parseInt( $( this ).attr( 'thumb' ) );
         slideTo( id );
+    });
+
+    $( '#comment-input-submit').click( function( event )
+    {
+        var a = $( '#comment-input' ).val();
+        self.raiseServerEvent( 'PostComment', a, selectedImageID, function( data )
+        {
+            alert( data );
+        });
+        event.preventDefault();
+        return false;
     });
 
     function clearSelected( filterClass )
