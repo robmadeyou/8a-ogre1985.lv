@@ -22,27 +22,22 @@ class ImageCommentsPanorama extends ImagePanorama
     {
         $view =new ImageCommentsPanoramaView( $this->imgs );
 
-        $view->attachEventHandler( 'PostComment', function( $commentText, $imageID )
-        {
-            $comment = new Comment();
-            $comment->ImageID = $imageID;
-            $comment->Comment = $commentText;
-            $comment->PostedBy = CustomLoginProvider::getLoggedInUser()->UserID;
-            $comment->save();
-            print "yoyoyoy";
-            return "AAAAAAAAAAAAAA";
-        });
 
-        $view->attachEventHandler( 'stuff', function()
-        {
-            return "bob";
-        });
 
         return $view;
     }
 
     protected function configureView()
     {
+
+        $this->view->attachEventHandler( 'PostComment', function( $commentText, $imageID )
+        {
+            $comment = new Comment();
+            $comment->ImageID = $imageID;
+            $comment->Comment = $commentText;
+            $comment->PostedBy = CustomLoginProvider::getLoggedInUser()->UserID;
+            $comment->save();
+        });
 
         return parent::configureView();
     }

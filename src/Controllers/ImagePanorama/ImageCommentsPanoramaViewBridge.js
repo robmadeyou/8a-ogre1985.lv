@@ -35,11 +35,6 @@ bridge.prototype.attachEvents = function () {
         })
     });
 
-    self.raiseServerEvent( 'stuff', function( a )
-    {
-        alert( a );
-    });
-
     $( '.thumbnail-image' ).click( function( event )
     {
         clearSelected( 'thumbnail-image' );
@@ -55,7 +50,7 @@ bridge.prototype.attachEvents = function () {
         var a = $( '#comment-input' ).val();
         self.raiseServerEvent( 'PostComment', a, selectedImageID, function( data )
         {
-            alert( data );
+
         });
         event.preventDefault();
         return false;
