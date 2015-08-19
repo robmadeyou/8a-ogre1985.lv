@@ -39,6 +39,11 @@ class ImageCommentsPanorama extends ImagePanorama
             $comment->save();
         });
 
+        $this->view->attachEventHandler( 'GetComments', function ( $imageID )
+        {
+            return ImageCommentsPanoramaView::getCommentsForImageID( $imageID, false );
+        });
+
         return parent::configureView();
     }
 }

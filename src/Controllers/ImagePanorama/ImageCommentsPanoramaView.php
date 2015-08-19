@@ -30,18 +30,14 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         <?php
 
         parent::printViewContent();
-        $comments = Comment::find( new Equals( 'ImageID', $this->images[0]->ImageID ) );
         ?>
         <div class="comments-section">
             <h1 class="title">Komenti</h1>
-            <?php
-                foreach( $comments as $comment )
-                {
-                    print '<div class="comment-outer">
-                                <p> ' . $comment->Comment . ' </p>
-                           </div>';
-                }
-            ?>
+            <div class="comments-bound">
+                <?php
+                    self::printImage( $this->images[0]->ImageID );
+                ?>
+            </div>
 
             <div class="comments-section-new">
                 <input type="text" id="comment-input">
@@ -64,6 +60,26 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
     public function getDeploymentPackageDirectory()
     {
         return __DIR__;
+    }
+
+    public static function getCommentsForImageID( $ImageID, $print = true )
+    {
+        $comments = Comment::find( new Equals( 'ImageID', $ImageID ) );
+        $builder = "";
+        foreach( $comments as $comment )
+        {
+            $builder .= '<div class="comment-outer">
+                        <p> ' . $comment->Comment . ' </p>
+                   </div>';
+        }
+        if( $print )
+        {
+            print $builder;
+        }
+        else
+        {
+            return $builder;
+        }
     }
 
 

@@ -19,6 +19,7 @@ bridge.prototype.attachEvents = function () {
     {
         mouseOver = false;
     });
+
     $( document ).ready( function()
     {
 
@@ -43,6 +44,11 @@ bridge.prototype.attachEvents = function () {
 
         var id = parseInt( $( this ).attr( 'thumb' ) );
         slideTo( id );
+
+	    self.raiseServerEvent( 'GetComments', selectedImageID, function( data )
+	    {
+		    $( '.comments-bound' ).html( data );
+	    });
     });
 
     $( '#comment-input-submit').click( function( event )
@@ -50,7 +56,6 @@ bridge.prototype.attachEvents = function () {
         var a = $( '#comment-input' ).val();
         self.raiseServerEvent( 'PostComment', a, selectedImageID, function( data )
         {
-
         });
         event.preventDefault();
         return false;
