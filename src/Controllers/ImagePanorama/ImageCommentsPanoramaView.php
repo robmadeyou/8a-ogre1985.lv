@@ -21,7 +21,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                 foreach( $this->images as $image )
                 {
                     $class = $counter === 0 ? 'selected' : '';
-                    print '<li><img class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '"></li>';
+                    print '<li><img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '"></li>';
                     $counter++;
                 }
                 ?>
@@ -35,7 +35,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
             <h1 class="title">Komenti</h1>
             <div class="comments-bound">
                 <?php
-                    self::printImage( $this->images[0]->ImageID );
+                    self::getCommentsForImageID( $this->images[0]->ImageID );
                 ?>
             </div>
 

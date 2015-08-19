@@ -78,6 +78,7 @@ bridge.prototype.attachEvents = function () {
             current++;
             $( '.image-panorama-images' ).finish().animate( { 'margin-left': '-=100%' } );
         }
+	    $( '#img' + current ).click();
     }
 
     function slideLeft()
@@ -92,6 +93,7 @@ bridge.prototype.attachEvents = function () {
             current--;
             $( '.image-panorama-images' ).finish().animate( { 'margin-left': '+=100%' } );
         }
+	    $( '#img' + current ).click();
     }
 
     function slideTo( index, speed )
