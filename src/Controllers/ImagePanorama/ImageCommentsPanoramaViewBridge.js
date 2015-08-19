@@ -40,9 +40,9 @@ bridge.prototype.attachEvents = function () {
     {
         clearSelected( 'thumbnail-image' );
         $( this ).addClass( 'selected' );
-        selectedImageID = $( this).attr( 'imgID' );
-
+        selectedImageID = $( this ).attr( 'imgID' );
         var id = parseInt( $( this ).attr( 'thumb' ) );
+	    current = id;
         slideTo( id );
 
 	    self.raiseServerEvent( 'GetComments', selectedImageID, function( data )
