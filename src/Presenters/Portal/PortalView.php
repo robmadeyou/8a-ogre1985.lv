@@ -16,7 +16,7 @@ class PortalView extends JQueryView
 
         $discussions = Gallery::find();
 
-        $sql = MySql::executeStatement( 'SELECT Source FROM tblImage' );
+        $sql = MySql::executeStatement( 'SELECT Source FROM tblImage ORDER BY RAND() LIMIT 6' );
 
         $images = [];
 
@@ -26,16 +26,22 @@ class PortalView extends JQueryView
         }
 
         ?>
+        <div class="__container odd">
             <?= new ImagePanorama( $images )?>
-        <div class="discussion-group">
+        </div>
+        <div class="discussion-group __container">
+            <h1 style="text-align: center">
+                Galerijas
+            </h1>
+            <a href="gallery/add/" style="margin-top: -30px; float: right;">Pievienot jaunu galeriju</a>
             <?php
             foreach( $discussions as $discussion )
             {
                 print new GalleryPresenter( $discussion );
             }
             ?>
+            <div class="__clear-floats"></div>
         </div>
-        <div class="__clear-floats"></div>
 
         <?php
     }

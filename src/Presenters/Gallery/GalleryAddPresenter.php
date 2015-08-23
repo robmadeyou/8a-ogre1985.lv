@@ -2,7 +2,9 @@
 
 namespace Your\WebApp\Presenters\Gallery;
 
+use Rhubarb\Crown\Exceptions\ForceResponseException;
 use Rhubarb\Crown\Layout\LayoutModule;
+use Rhubarb\Crown\Response\RedirectResponse;
 use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
 use Your\WebApp\Layouts\PortalLayout;
 use Your\WebApp\Model\Image;
@@ -34,6 +36,11 @@ class GalleryAddPresenter extends ModelFormPresenter
         }
 
         return $model;
+    }
+
+    protected function redirectAfterCancel()
+    {
+        throw new ForceResponseException( new RedirectResponse( '/portal/' ) );
     }
 
 }

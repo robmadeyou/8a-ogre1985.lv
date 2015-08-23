@@ -40,7 +40,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
             </div>
 
             <div class="comments-section-new">
-                <input type="text" id="comment-input">
+                <textarea id="comment-input"></textarea>
                 <button type="submit" id="comment-input-submit">Pievienot</button>
             </div>
         </div>
@@ -68,9 +68,14 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         $builder = "";
         foreach( $comments as $comment )
         {
-            $builder .= '<div class="comment-outer">
-                        <p> ' . $comment->Comment . ' </p>
-                   </div>';
+            $builder .= <<<HTML
+                        <div class="comment-outer">
+                            <div class="comment-outer-image">
+                                <img src="">
+                            </div>
+                         <p> ' . $comment->Comment . ' </p>
+                         </div>
+HTML;
         }
         if( $print )
         {

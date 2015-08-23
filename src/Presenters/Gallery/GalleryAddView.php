@@ -60,8 +60,8 @@ class GalleryAddView extends CrudView
         $page->PageTitle = 'Pievienot bildi';
 
         $this->printFieldset( "", [
-            "Image",
-            "Title",
+            "Bildes" => "Image",
+            "Nosaukums" => "Title",
             $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
         ]);
     }

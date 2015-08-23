@@ -24,18 +24,22 @@ class PortalLayout extends BaseLayout
         </style>
         <div id="content">
             <div id="portal-body">
-                <div id="portal-title">
+                <div id="portal-title" class="__container noSpace">
                     <div id="title">
-                        <img style="float: left; height: 100%;" src="http://www.ogres1v.lv/assets/templates/ogres1vsk/img/o1v_logo.png"/>
-                        <h1 style="float: left;">8a klase</h1>
+                        <a style="float: left; " href="/">
+                            <img src="http://www.ogres1v.lv/assets/templates/ogres1vsk/img/o1v_logo.png"/>
+                        </a>
+                        <h1 style="float: left;">8A Klase</h1>
                     </div>
-                    <div class="__clear-floats"></div>
                     <div id="portal-title-actions">
                         <a href="/users/">Mans Profils</a> |
                         <a href="logout/">Iziet</a>
                     </div>
+                    <div class="__clear-floats"></div>
                 </div>
-                <?php
+        <div class="__clear-floats"></div>
+
+        <?php
                 parent::printPageHeading();
                 ?>
         <?php

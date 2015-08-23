@@ -47,4 +47,10 @@ class Comment extends Model
         }
         parent::beforeSave();
     }
+
+    protected function getUserImage()
+    {
+        $user = new CustomUser( $this->PostedBy );
+        return $user->Image;
+    }
 }
