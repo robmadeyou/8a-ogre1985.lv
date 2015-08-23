@@ -11,7 +11,8 @@ class GalleryPresenter extends ModelFormPresenter
     public function __construct( $gallery )
     {
         $this->gallery = $gallery;
-        parent::__construct( "" );
+        parent::__construct( "gallery-thumbnail" );
+
     }
 
     /**

@@ -97,6 +97,11 @@ body {
     width: 40px;
 }
 
+.discussion-group:last-child
+{
+    clear: both;
+}
+
 #log-in
 {
     margin-top: 10px;
@@ -119,13 +124,23 @@ body {
         background-repeat: no-repeat;
         background-size: 1980px auto;
     }
+
+}
+
+@media (max-width: 1920px )
+{
+    #portal-body
+    {
+        left: 40%;
+        right: 40%;
+    }
 }
 
 #portal-body
 {
-    position: absolute;
-    left: 10%;
-    right: 10%;
+    max-width: 1175px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
 
     padding: 10px 0 50px 0;
@@ -144,17 +159,15 @@ body {
 
 #portal-title
 {
+    position: relative;
     width: 100%;
     min-height: 50px;
     max-height: 100px;
 
-    padding-bottom: 10px;
-    border-bottom: 2px black solid;
 }
 
 #title
 {
-    text-align: center;
     font-family: OpenSans;
     font-size: 25px;
     padding-top: 0;
@@ -170,14 +183,16 @@ body {
 #portal-title-actions
 {
     position: absolute;
-    right: -40px;
+    right: 0px;
     top: 20px;
     padding-right: 50px;
 }
 
 .portal-image-gallery
 {
-    max-height: 34vw;
+    height: 34vw;
+    max-height: 520px;
+    overflow: hidden;
 }
 
 #portal-navbar
@@ -186,7 +201,7 @@ body {
     height: 43px;
 }
 
-.gallery-thumbnail
+#gallery-thumbnail
 {
     float:left;
     width: 200px;
@@ -196,34 +211,41 @@ body {
     margin-bottom: 20px;
 }
 
-#discussion-full-width img, .gallery-thumbnail img
+#discussion-full-width img, #gallery-thumbnail img
 {
     width: 100%;
     height:100%;
 }
 
 
-.Image-panorama
+.image-panorama
 {
-    overflow: hidden;
+    position: relative;
+    max-height: 100%;
 }
 
 .image-panorama-images
 {
+    position: absolute;
     max-width: none!important;
-    height: 100%;
+    height: 34vw;
+    max-height: 520px;
 }
 
 .image-panorama-navigation
 {
     position: relative;
-    top: -34vw;
+    width: 100%;
+    height: 100%;
 }
 
 .image-panorama-navigation button
 {
-    height: 34vw;
+    position: absolute;
+    height: 50px;
     width: 50px;
+    top: 40%;
+    bottom: 40%;
     opacity: 0.4;
     transition: opacity 0.4s;
 }
@@ -235,19 +257,19 @@ body {
 
 .image-panorama-prev
 {
-    float: left;
+
+    left: 0;
 }
 
 .image-panorama-next
 {
-    float: right;
+    right: 0;
 }
 
 .image-panorama-image-container
 {
     float: left;
     text-align: center;
-    height: 100%;
 }
 
 .image-panorama-image-container img
@@ -305,5 +327,10 @@ body {
 .thumbnail-image.selected
 {
     border: 2px orange solid;
+}
+
+.__clear-floats
+{
+    clear: both;
 }
 

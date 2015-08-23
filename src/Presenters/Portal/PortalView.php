@@ -35,6 +35,8 @@ class PortalView extends JQueryView
             }
             ?>
         </div>
+        <div class="__clear-floats"></div>
+
         <?php
     }
 }
