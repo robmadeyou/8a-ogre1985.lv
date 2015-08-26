@@ -11,6 +11,7 @@ bridge.prototype.attachEvents = function () {
     var mouseOver = false;
     var self = this;
     var selectedImageID = $( $( '.thumbnail-image' )[0] ).attr( 'imgID' );
+    var comments = $( '.comments-bound');
 
     $( '.image-panorama').hover( function()
     {
@@ -38,24 +39,38 @@ bridge.prototype.attachEvents = function () {
 
     $( '.thumbnail-image' ).click( function( event )
     {
+        comments.finish();
+        comments.slideUp();
         clearSelected( 'thumbnail-image' );
         $( this ).addClass( 'selected' );
         selectedImageID = $( this ).attr( 'imgID' );
         var id = parseInt( $( this ).attr( 'thumb' ) );
 	    current = id;
         slideTo( id );
-
-	    self.raiseServerEvent( 'GetComments', selectedImageID, function( data )
-	    {
-		    $( '.comments-bound' ).html( data );
-	    });
+	    getComments();
     });
+
+    function getComments( id )
+    {
+        if( !id )
+        {
+            id = selectedImageID;
+        }
+        self.raiseServerEvent( 'GetComments', id, function( data )
+        {
+            comments.html( data );
+            comments.slideDown();
+        });
+    }
 
     $( '#comment-input-submit').click( function( event )
     {
-        var a = $( '#comment-input' ).val();
-        self.raiseServerEvent( 'PostComment', a, selectedImageID, function( data )
+        var a = $( '#comment-input' );
+        comments.slideUp();
+        self.raiseServerEvent( 'PostComment', a.val(), selectedImageID, function( data )
         {
+            a.val( '' );
+            getComments();
         });
         event.preventDefault();
         return false;

@@ -15,7 +15,7 @@ class GalleryView extends HtmlView
     protected function printViewContent()
     {
         ?>
-            <p class="gallery-title"><?= htmlspecialchars( $this->gallery->Title ) ?></p>
+            <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><p class="gallery-title"><?= htmlspecialchars( $this->gallery->Title ) ?></p></a>
             <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><img src="<?= $this->gallery->getDefaultImage() ?>"></a>
         <?php
     }

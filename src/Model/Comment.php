@@ -43,7 +43,7 @@ class Comment extends Model
     {
         if( $this->isNewRecord() )
         {
-            $this->PostedAt = new RhubarbDateTime();
+            $this->PostedAt = new \DateTime();
         }
         parent::beforeSave();
     }

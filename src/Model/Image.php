@@ -37,11 +37,11 @@ class Image extends Model
 
     protected function beforeSave()
     {
-        $this->LastUpdatedBy = new RhubarbDateTime();
+        $this->LastUpdatedBy = new \DateTime();
 
         if( $this->isNewRecord() )
         {
-            $this->UploadedAt = new RhubarbDateTime();
+            $this->UploadedAt = new \DateTime();
         }
         parent::beforeSave();
     }

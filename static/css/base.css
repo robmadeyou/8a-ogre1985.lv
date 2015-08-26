@@ -129,7 +129,7 @@ body {
 
 #portal-body
 {
-    max-width: 1175px;
+    max-width: 1320px;
     margin-left: auto;
     margin-right: auto;
 
@@ -345,3 +345,46 @@ form
     clear: both;
 }
 
+
+.comments-section-new
+{
+    width: 100%;
+}
+
+.comments-section-new textarea
+{
+    width: 80%;
+}
+
+.comments-section-new button
+{
+    width: 19%;
+}
+
+.comment-outer
+{
+    width: 100%;
+}
+
+.comment-outer-text
+{
+    float: left;
+    width: 85%;
+}
+
+.comment-outer-image
+{
+    width: 15%;
+    height: 150px;
+    float: left;
+}
+
+.comment-outer-image img
+{
+    height: 100%;
+}
+
+.comment-outer-title
+{
+    font-weight: bold;
+}

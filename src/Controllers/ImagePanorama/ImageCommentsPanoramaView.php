@@ -4,7 +4,9 @@ namespace Your\WebApp\Controllers\ImagePanorama;
 
 use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
 use Rhubarb\Stem\Filters\Equals;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Comment;
+use Your\WebApp\Model\CustomUser;
 
 class ImageCommentsPanoramaView extends ImagePanoramaView
 {
@@ -14,34 +16,40 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
     {
 
         ?>
-        <div class="gallery-collection-images">
-            <ul>
-                <?php
-                $counter = 0;
-                foreach( $this->images as $image )
-                {
-                    $class = $counter === 0 ? 'selected' : '';
-                    print '<li><img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '"></li>';
-                    $counter++;
-                }
-                ?>
-            </ul>
-        </div>
-        <?php
-
-        parent::printViewContent();
-        ?>
-        <div class="comments-section">
-            <h1 class="title">Komenti</h1>
-            <div class="comments-bound">
-                <?php
-                    self::getCommentsForImageID( $this->images[0]->ImageID );
-                ?>
+        <div class="__container" style="padding-bottom: 10px">
+            <div class="gallery-collection-images">
+                <ul>
+                    <?php
+                    $counter = 0;
+                    foreach( $this->images as $image )
+                    {
+                        $class = $counter === 0 ? 'selected' : '';
+                        print '<li><img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '"></li>';
+                        $counter++;
+                    }
+                    ?>
+                </ul>
             </div>
+            <?php
 
-            <div class="comments-section-new">
-                <textarea id="comment-input"></textarea>
-                <button type="submit" id="comment-input-submit">Pievienot</button>
+            parent::printViewContent();
+
+            ?>
+        </div>
+        <div class="__container" style="padding: 10px 10px 10px 10px;">
+            <div class="comments-section">
+                <h1 class="title" style="text-align: center">Komenti</h1>
+                <div class="comments-bound">
+                    <?php
+                        self::getCommentsForImageID( $this->images[0]->ImageID );
+                    ?>
+                </div>
+                <hr>
+                <div class="comments-section-new">
+                    <h1>Pievienot jaunu kommentu</h1>
+                    <textarea id="comment-input"></textarea>
+                    <button type="submit" id="comment-input-submit">Pievienot</button>
+                </div>
             </div>
         </div>
         <?php
@@ -68,13 +76,20 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         $builder = "";
         foreach( $comments as $comment )
         {
+            $user = new CustomUser( $comment->PostedBy );
+            $fullname = ucwords( $user->getFullName() );
             $builder .= <<<HTML
                         <div class="comment-outer">
                             <div class="comment-outer-image">
-                                <img src="">
+                                <img src="{$user->Image}">
                             </div>
-                         <p> ' . $comment->Comment . ' </p>
+                            <div class="comment-outer-text">
+                                <div class="comment-outer-title"><p class="comment-inner-name">{$fullname}</p><p style="float: right; margin-top: -15px" class="comment-inner-date">{$comment->PostedAt}</p></div>
+                                <div class="comment-inner-text">{$comment->Comment}</div>
+                            </div>
                          </div>
+                         <div class="__clear-floats"></div>
+                         <hr>
 HTML;
         }
         if( $print )

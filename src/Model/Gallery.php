@@ -38,7 +38,7 @@ class Gallery extends Model
 
         if( $this->isNewRecord() )
         {
-            $this->CreatedAt = new RhubarbDateTime( 'now' );
+            $this->CreatedAt = new DateTime( 'now' );
         }
 
         parent::beforeSave();

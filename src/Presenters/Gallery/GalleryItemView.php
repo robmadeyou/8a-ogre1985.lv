@@ -22,9 +22,6 @@ class GalleryItemView extends CrudView
 
     protected function printViewContent()
     {
-        ?>
-            <div class="__container">
-        <?php
         $model = $this->raiseEvent( 'GetRestModel' );
 
         $html = new HtmlPageSettings();
@@ -32,9 +29,5 @@ class GalleryItemView extends CrudView
 
 
         print $this->presenters[ 'SlideView' ];
-
-        ?>
-            </div>
-        <?php
     }
 }
