@@ -5,7 +5,7 @@ namespace Your\WebApp\Presenters\Gallery;
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Controls\FileUpload\DragAndDropFileUploadPresenter;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
-use Rhubarb\Scaffolds\Authentication\LoginProvider;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Image;
 
 class GalleryAddView extends CrudView
@@ -26,7 +26,7 @@ class GalleryAddView extends CrudView
         $upload->attachEventHandler( 'FileUploaded', function( $file, $location )
         {
             if( $file && $location ) {
-                $user = LoginProvider::getLoggedInUser();
+                $user = CustomLoginProvider::getLoggedInUser();
 
                 $info = pathinfo( $file );
 
