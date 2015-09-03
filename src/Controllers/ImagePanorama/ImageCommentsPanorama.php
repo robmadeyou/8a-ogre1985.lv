@@ -20,11 +20,7 @@ class ImageCommentsPanorama extends ImagePanorama
 
     protected function createView()
     {
-        $view =new ImageCommentsPanoramaView( $this->imgs );
-
-
-
-        return $view;
+        return new ImageCommentsPanoramaView( $this->imgs );
     }
 
     protected function configureView()

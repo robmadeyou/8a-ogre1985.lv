@@ -41,11 +41,6 @@ class GalleryAddPresenter extends ModelFormPresenter
         return new GalleryAddView();
     }
 
-    protected function configureView()
-    {
-        return parent::configureView();
-    }
-
     protected function saveRestModel()
     {
 
@@ -57,7 +52,6 @@ class GalleryAddPresenter extends ModelFormPresenter
             {
                 if( !is_dir( $img ) )
                 {
-                    $pathinfo = pathinfo( $img );
                     GalleryAddView::uploadImage( $img, self::$imgpath . $img );
                 }
             }

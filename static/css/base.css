@@ -343,6 +343,7 @@ form
 .gallery-collection-images ul li img
 {
     height: 100%;
+    max-width: 140px;
     cursor: pointer;
 }
 

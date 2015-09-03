@@ -38,7 +38,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         </div>
         <div class="__container" style="padding: 10px 10px 10px 10px;">
             <div class="comments-section">
-                <h1 class="title" style="text-align: center">Komenti</h1>
+                <h1 class="title" style="text-align: center">Komentari</h1>
                 <div class="comments-bound">
                     <?php
                         self::getCommentsForImageID( $this->images[0]->ImageID );
@@ -46,7 +46,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                 </div>
                 <hr>
                 <div class="comments-section-new">
-                    <h1>Pievienot jaunu kommentu</h1>
+                    <h1>Pievienot jaunu Komentaru</h1>
                     <textarea id="comment-input"></textarea>
                     <button type="submit" id="comment-input-submit">Pievienot</button>
                 </div>
