@@ -7,6 +7,7 @@ use Rhubarb\Stem\Filters\Equals;
 use Rhubarb\Stem\Models\Model;
 use Rhubarb\Stem\Repositories\MySql\MySql;
 use Rhubarb\Stem\Schema\Columns\AutoIncrement;
+use Rhubarb\Stem\Schema\Columns\Boolean;
 use Rhubarb\Stem\Schema\Columns\DateTime;
 use Rhubarb\Stem\Schema\Columns\Integer;
 use Rhubarb\Stem\Schema\Columns\String;
@@ -27,7 +28,8 @@ class Gallery extends Model
             new AutoIncrement( 'GalleryID' ),
             new String( 'Title', 125 ),
             new Integer( 'DefaultImageID' ),
-            new DateTime( 'CreatedAt' )
+            new DateTime( 'CreatedAt' ),
+            new Boolean( 'Published' )
         );
 
         return $schema;

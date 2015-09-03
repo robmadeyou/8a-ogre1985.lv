@@ -4,6 +4,7 @@ namespace Your\WebApp\Presenters\Gallery;
 
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Controls\FileUpload\DragAndDropFileUploadPresenter;
+use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Image;
@@ -12,6 +13,8 @@ class GalleryAddView extends CrudView
 {
 
     public static $createdImagesForGallery = [];
+
+    use WithJqueryViewBridgeTrait;
 
     public function createPresenters()
     {
@@ -52,18 +55,38 @@ class GalleryAddView extends CrudView
             $upload,
             "Title"
         );
+
+        $this->presenters[ 'Save' ]->setButtonText( 'Saglabat' );
+        $this->presenters[ 'Cancel' ]->setButtonText( 'Atcelt' );
     }
 
     protected function printViewContent()
     {
         $page = new HtmlPageSettings();
-        $page->PageTitle = 'Pievienot bildi';
+        $page->PageTitle = 'Pievienot Galeriju';
 
-        $this->printFieldset( "", [
-            "Bildes" => "Image",
-            "Nosaukums" => "Title",
-            $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
-        ]);
+        ?>
+        <div class="__container">
+            <a href="#" id="addPicturesLink">Pievienot bilde(s)</a>
+            <div id="dropzone">
+                <div action="/gallery/" class="dropzone" id="demo-upload">
+                    <div class="dz-message">
+                        Iemet, vai clikskini te lai pievienotu bildes.<br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Implement this and return __DIR__ when your ViewBridge.js is in the same folder as your class
+     *
+     * @returns string Path to your ViewBridge.js file
+     */
+    public function getDeploymentPackageDirectory()
+    {
+        return __DIR__;
     }
 
 }

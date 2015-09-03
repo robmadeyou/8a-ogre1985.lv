@@ -11,11 +11,13 @@ class PortalLayout extends BaseLayout
     function __construct()
     {
         ResourceLoader::loadResource( "/static/css/base.css" );
+        ResourceLoader::loadResource( "/static/css/dropzone.css" );
     }
 
     protected function printPageHeading()
     {
         ?>
+    <script src="/static/scripts/dropzone.js"></script>
         <style>
             body
             {
@@ -39,8 +41,12 @@ class PortalLayout extends BaseLayout
                 </div>
         <div class="__clear-floats"></div>
 
-        <?php
-                parent::printPageHeading();
+                <?php
+                $title = $this->getTitle();
+
+                if ($title != "") {
+                    print '<div class="__title-container"><h1>' . $title . '</h1></div>';
+                }
                 ?>
         <?php
     }

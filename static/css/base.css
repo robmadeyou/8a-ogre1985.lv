@@ -146,6 +146,21 @@ body {
 
 }
 
+.__title-container
+{
+    text-align: center;
+    width: 100%;
+}
+
+.__title-container h1
+{
+    font-size: 250%;
+    background-color: white;
+    color: black;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .__container
 {
     background-color: white;
@@ -286,6 +301,7 @@ form
 .image-panorama-image-container img
 {
     height: 100%;
+    max-width: 100%;
 }
 
 .image-single-view
