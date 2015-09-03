@@ -11,6 +11,29 @@ use Your\WebApp\Model\Image;
 
 class GalleryAddPresenter extends ModelFormPresenter
 {
+    public static $imgpath;
+    public function __construct( $name = "" )
+    {
+        self::$imgpath = 'usrdata/' . $_COOKIE[ 'PHPSESSID' ] . '/';
+
+        parent::__construct( $name );
+
+        if( !empty( $_FILES ) )
+        {
+            if( !is_dir( self::$imgpath ))
+            {
+                mkdir( self::$imgpath, 777, true );
+            }
+
+            foreach( $_FILES as $file )
+            {
+                if( self::isFileImage( $file[ 'tmp_name' ]))
+                {
+                    rename( $file[ 'tmp_name' ], self::$imgpath . $file[ 'name' ] );
+                }
+            }
+        }
+    }
 
     protected function createView()
     {
@@ -28,6 +51,18 @@ class GalleryAddPresenter extends ModelFormPresenter
 
         $model = parent::saveRestModel();
 
+        if( !self::isDirectoryEmpty( self::$imgpath ) )
+        {
+            foreach( scandir( self::$imgpath ) as $img )
+            {
+                if( !is_dir( $img ) )
+                {
+                    $pathinfo = pathinfo( $img );
+                    GalleryAddView::uploadImage( $img, self::$imgpath . $img );
+                }
+            }
+        }
+
         foreach( GalleryAddView::$createdImagesForGallery as $id )
         {
             $image = new Image( $id );
@@ -41,6 +76,37 @@ class GalleryAddPresenter extends ModelFormPresenter
     protected function redirectAfterCancel()
     {
         throw new ForceResponseException( new RedirectResponse( '/portal/' ) );
+    }
+
+    public static function isDirectoryEmpty( $dir )
+    {
+        if ( !is_readable( $dir ) ) return null;
+        $handle = opendir( $dir );
+        while ( false !== ( $entry = readdir( $handle ) ) )
+        {
+            if ( $entry != "." && $entry != ".." )
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static function isFileImage( $path )
+    {
+        $finfo = new \finfo( FILEINFO_MIME_TYPE );
+        if ( false === $ext = array_search(
+                $finfo->file( $path ),
+                array(
+                    'jpg' => 'image/jpeg',
+                    'png' => 'image/png',
+                    'gif' => 'image/gif',
+                ),
+                true
+            )) {
+            return false;
+        }
+        return true;
     }
 
 }

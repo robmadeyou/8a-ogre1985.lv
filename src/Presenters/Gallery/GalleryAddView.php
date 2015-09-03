@@ -28,27 +28,7 @@ class GalleryAddView extends CrudView
 
         $upload->attachEventHandler( 'FileUploaded', function( $file, $location )
         {
-            if( $file && $location ) {
-                $user = CustomLoginProvider::getLoggedInUser();
-
-                $info = pathinfo( $file );
-
-                $discussion = new Image();
-                $discussion->UploadedBy = $user->UserID;
-                $discussion->save();
-
-                $discussion->Source = '/static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ];
-
-                if (!is_dir( 'static/images/uploaded/' )) {
-                    mkdir( 'static/images/uploaded', 0777, true );
-                }
-                $discussion->save();
-
-                rename( $location,
-                    'static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ] );
-
-                self::$createdImagesForGallery[] = $discussion->ImageID;
-            }
+            self::uploadImage( $file, $location );
         });
 
         $this->addPresenters(
@@ -69,7 +49,7 @@ class GalleryAddView extends CrudView
         <div class="__container">
             <a href="#" id="addPicturesLink">Pievienot bilde(s)</a>
             <div id="dropzone">
-                <div action="/gallery/" class="dropzone" id="demo-upload">
+                <div action="/portal/gallery/add/" class="dropzone" id="demo-upload">
                     <div class="dz-message">
                         Iemet, vai clikskini te lai pievienotu bildes.<br />
                     </div>
@@ -77,6 +57,8 @@ class GalleryAddView extends CrudView
             </div>
         </div>
         <?php
+
+        print $this->presenters[ 'Save' ];
     }
 
     /**
@@ -87,6 +69,31 @@ class GalleryAddView extends CrudView
     public function getDeploymentPackageDirectory()
     {
         return __DIR__;
+    }
+
+    public static function uploadImage( $file, $location )
+    {
+        if( $file && $location ) {
+            $user = CustomLoginProvider::getLoggedInUser();
+
+            $info = pathinfo( $file );
+
+            $discussion = new Image();
+            $discussion->UploadedBy = $user->UserID;
+            $discussion->save();
+
+            $discussion->Source = '/static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ];
+
+            if (!is_dir( 'static/images/uploaded/' )) {
+                mkdir( 'static/images/uploaded', 0777, true );
+            }
+            $discussion->save();
+
+            rename( $location,
+                'static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ] );
+
+            self::$createdImagesForGallery[] = $discussion->ImageID;
+        }
     }
 
 }
