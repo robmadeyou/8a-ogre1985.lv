@@ -22,7 +22,7 @@ class GalleryAddPresenter extends ModelFormPresenter
         {
             if( !is_dir( self::$imgpath ))
             {
-                mkdir( self::$imgpath, 777, true );
+                mkdir( self::$imgpath, 0777, true );
             }
 
             foreach( $_FILES as $file )
