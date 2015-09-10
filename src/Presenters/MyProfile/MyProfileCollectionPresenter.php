@@ -2,9 +2,12 @@
 
 namespace Your\WebApp\Presenters\MyProfile;
 
+use Rhubarb\Crown\Exceptions\ForceResponseException;
 use Rhubarb\Crown\Layout\LayoutModule;
+use Rhubarb\Crown\Response\RedirectResponse;
 use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
 use Your\WebApp\Layouts\PortalLayout;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 
 class MyProfileCollectionPresenter extends ModelFormPresenter
 {
@@ -16,6 +19,11 @@ class MyProfileCollectionPresenter extends ModelFormPresenter
 
     protected function createView()
     {
+        if( !CustomLoginProvider::isAdmin() )
+        {
+            $user = CustomLoginProvider::getLoggedInUser();
+            throw new ForceResponseException( new RedirectResponse( '/users/' . $user->UniqueIdentifier . '/edit/' ) );
+        }
         return new MyProfileCollectionView();
     }
 }

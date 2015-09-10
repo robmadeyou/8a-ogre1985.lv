@@ -41,7 +41,8 @@ class YourAppModule extends Module
                 "/" => new ClassMappedUrlHandler( '\Your\WebApp\Presenters\IndexPresenter', [
                     'portal/' => new ClassMappedUrlHandler( 'Your\WebApp\Presenters\Portal\PortalPresenter', [
                         'gallery/' => new CrudUrlHandler( 'Gallery', 'Your\WebApp\Presenters\Gallery' ),
-                        'image/'  => new CrudUrlHandler( 'Image', 'Your\WebApp\Presenters\Image' )
+                        'image/'  => new CrudUrlHandler( 'Image', 'Your\WebApp\Presenters\Image' ),
+                        'logout/' => new ClassMappedUrlHandler( 'Your\WebApp\Presenters\Logout\LogoutPresenter' )
                     ] ),
                     'users/' => new CrudUrlHandler( 'CustomUser', 'Your\WebApp\Presenters\MyProfile' )
                 ] ),

@@ -35,7 +35,7 @@ class PortalLayout extends BaseLayout
                     </div>
                     <div id="portal-title-actions">
                         <a href="/users/">Mans Profils</a> |
-                        <a href="logout/">Iziet</a>
+                        <a href="/portal/logout/">Iziet</a>
                     </div>
                     <div class="__clear-floats"></div>
                 </div>

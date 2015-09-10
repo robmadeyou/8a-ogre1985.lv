@@ -22,9 +22,18 @@ class MyProfileAddPresenter extends ModelFormPresenter
     {
         if( !CustomLoginProvider::isAdmin() )
         {
-            throw new ForceResponseException( new RedirectResponse( '/portal/' ) );
+            $user = CustomLoginProvider::getLoggedInUser();
+            throw new ForceResponseException( new RedirectResponse( '/users/' . $user->UniqueIdentifier . '/edit/' ) );
         }
         return new MyProfileAddView();
     }
+
+    protected function saveRestModel()
+    {
+        $user = parent::saveRestModel();
+        $user->setNewPassword( $user->Password );
+        $user->save();
+    }
+
 
 }
