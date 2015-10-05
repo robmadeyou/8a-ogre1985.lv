@@ -36,7 +36,7 @@ class GalleryAddView extends CrudView
             "Title"
         );
 
-        $this->presenters[ 'Save' ]->setButtonText( 'Saglabat' );
+        $this->presenters[ 'Save' ]->setButtonText( 'Saglābat' );
         $this->presenters[ 'Cancel' ]->setButtonText( 'Atcelt' );
     }
 
@@ -51,7 +51,7 @@ class GalleryAddView extends CrudView
             <div id="dropzone">
                 <div action="/portal/gallery/add/" class="dropzone" id="demo-upload">
                     <div class="dz-message">
-                        Iemet, vai clikskini te lai pievienotu bildes.<br />
+                        Iemet, vai spied šeit lai pievienotu bildes.<br />
                     </div>
                 </div>
             </div>

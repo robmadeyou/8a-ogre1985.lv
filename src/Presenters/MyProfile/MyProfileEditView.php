@@ -10,15 +10,16 @@ class MyProfileEditView extends MyProfileAddView
     protected function printViewContent()
     {
         $html = new HtmlPageSettings();
-        $html->PageTitle = 'Manit profilu';
+        $html->PageTitle = 'Manīt profilu';
         ?>
             <div class="__container">
                 <?=
                  $this->printFieldset( "",
                     [
                         'Bilde' => 'Image',
-                        'Vards' => 'Forename',
-                        'Uzvards' => 'Surname',
+                        'Vārds' => 'Forename',
+                        'Uzvārds' => 'Surname',
+                        'Parole' => 'PasswordPlace',
                         'E - pasts' => 'Email',
                         $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
                     ]);

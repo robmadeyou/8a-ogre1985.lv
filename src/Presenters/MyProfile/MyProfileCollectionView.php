@@ -17,10 +17,10 @@ class MyProfileCollectionView extends CrudView
         );
 
         $this->presenters[ 'UserTable' ]->Columns = [
-            'Lietotaja vards' => 'Username',
-            'Vards' => 'Forename',
-            'Uzvards' => 'Surname',
-            'E pasts' => 'Email',
+            'Lietotaja vārds' => 'Username',
+            'Vārds' => 'Forename',
+            'Uzvārds' => 'Surname',
+            'E - pasts' => 'Email',
             '' => '<a href="/users/{UserID}/edit/">Mainit</a>'
         ];
     }

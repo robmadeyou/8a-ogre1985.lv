@@ -31,7 +31,11 @@ class MyProfileAddPresenter extends ModelFormPresenter
     protected function saveRestModel()
     {
         $user = parent::saveRestModel();
-        $user->setNewPassword( $user->Password );
+        if( $user->PasswordPlace )
+        {
+            $user->setNewPassword( $user->PasswordPlace );
+        }
+        $user->Image = '/static/images/usrimgs/' . $user->UniqueIdentifier;
         $user->save();
     }
 

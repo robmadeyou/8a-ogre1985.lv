@@ -64,8 +64,8 @@ class ImagePanoramaView extends JQueryView
     protected function printNavigationbuttons()
     {
         ?>
-            <button class="image-panorama-prev">Prev</button>
-            <button class="image-panorama-next">Next</button>
+            <button class="image-panorama-prev">Atpakaļ</button>
+            <button class="image-panorama-next">Uz priekšu</button>
         <?php
     }
 
