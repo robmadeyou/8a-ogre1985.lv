@@ -36,20 +36,19 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
 
             ?>
         </div>
-        <div class="__container" style="padding: 10px 10px 10px 10px;">
-            <div class="comments-section">
+        <div class="comments-section">
+            <div class="__title-container">
                 <h1 class="title" style="text-align: center">Komentāri</h1>
-                <div class="comments-bound">
-                    <?php
-                        self::getCommentsForImageID( $this->images[0]->ImageID );
-                    ?>
-                </div>
-                <hr>
-                <div class="comments-section-new">
-                    <h1>Pievienot jaunu Komentāru</h1>
-                    <textarea id="comment-input"></textarea>
-                    <button type="submit" id="comment-input-submit">Pievienot</button>
-                </div>
+            </div>
+            <div class="comments-bound">
+                <?php
+                    self::getCommentsForImageID( $this->images[0]->ImageID );
+                ?>
+            </div>
+            <div class="comments-section-new __container">
+                <h1>Pievienot jaunu Komentāru</h1>
+                <textarea id="comment-input"></textarea>
+                <button type="submit" id="comment-input-submit">Pievienot</button>
             </div>
         </div>
         <?php
@@ -79,7 +78,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
             $user = new CustomUser( $comment->PostedBy );
             $fullname = ucwords( $user->getFullName() );
             $builder .= <<<HTML
-                        <div class="comment-outer">
+                        <div class="comment-outer __container">
                             <div class="comment-outer-image">
                                 <img src="{$user->Image}">
                             </div>
@@ -87,9 +86,9 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                                 <div class="comment-outer-title"><p class="comment-inner-name">{$fullname}</p><p style="float: right; margin-top: -15px" class="comment-inner-date">{$comment->PostedAt}</p></div>
                                 <div class="comment-inner-text">{$comment->Comment}</div>
                             </div>
+                            <div class="__clear-floats"></div>
                          </div>
                          <div class="__clear-floats"></div>
-                         <hr>
 HTML;
         }
         if( $print )

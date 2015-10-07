@@ -150,6 +150,7 @@ body {
 {
     text-align: center;
     width: 100%;
+    clear: both;
 }
 
 .__title-container h1
@@ -157,15 +158,17 @@ body {
     font-size: 250%;
     background-color: white;
     color: black;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
+    clear: both;
 }
 
 .__container
 {
+    padding: 0 8px 6px 6px;
     background-color: white;
     box-shadow: #e4e4eb;
     margin-bottom: 6px;
+    clear: both;
 }
 
 .__container.noSpace
