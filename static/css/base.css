@@ -176,6 +176,11 @@ body {
     margin-bottom: 0;
 }
 
+.__container.comment
+{
+    padding: 16px 16px 16px 16px;
+}
+
 .__container.odd
 {
     background-color: #eeeeee;
@@ -394,7 +399,7 @@ form
 
 .comment-outer-image
 {
-    width: 15%;
+    width: 7%;
     height: 50px;
     float: left;
 }

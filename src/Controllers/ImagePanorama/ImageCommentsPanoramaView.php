@@ -17,6 +17,11 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
 
         ?>
         <div class="__container" style="padding-bottom: 10px">
+            <?php
+
+            parent::printViewContent();
+
+            ?>
             <div class="gallery-collection-images">
                 <ul>
                     <?php
@@ -30,11 +35,6 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                     ?>
                 </ul>
             </div>
-            <?php
-
-            parent::printViewContent();
-
-            ?>
         </div>
         <div class="comments-section">
             <div class="__title-container">
@@ -83,7 +83,9 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                                 <img src="{$user->Image}">
                             </div>
                             <div class="comment-outer-text">
-                                <div class="comment-outer-title"><p class="comment-inner-name">{$fullname}</p><p style="float: right; margin-top: -15px" class="comment-inner-date">{$comment->PostedAt}</p></div>
+                                <div class="comment-outer-title">
+                                    <span class="comment-inner-name">{$fullname}</span><span style="float: right;" class="comment-inner-date">{$comment->PostedAt}</span>
+                                </div>
                                 <div class="comment-inner-text">{$comment->Comment}</div>
                             </div>
                             <div class="__clear-floats"></div>
