@@ -78,7 +78,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
             $user = new CustomUser( $comment->PostedBy );
             $fullname = ucwords( $user->getFullName() );
             $builder .= <<<HTML
-                        <div class="comment-outer __container">
+                        <div class="comment-outer">
                             <div class="comment-outer-image">
                                 <img src="{$user->Image}">
                             </div>

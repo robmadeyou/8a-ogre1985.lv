@@ -148,6 +148,7 @@ body {
 
 .__title-container
 {
+    position:relative;
     text-align: center;
     width: 100%;
     clear: both;
@@ -389,6 +390,7 @@ form
 .comment-outer
 {
     width: 100%;
+    background: white;
 }
 
 .comment-outer-text
@@ -452,5 +454,14 @@ form
 {
     font-style: normal;
     color: #9c9c9c;
-    margin-left: 20px;
+    margin-left: 6px;
+    font-size: 50%;
+
+}
+
+.gallery-edit
+{
+    position: absolute;
+    right: 0;
+    top: 20px;
 }

@@ -43,9 +43,15 @@ class PortalLayout extends BaseLayout
 
                 <?php
                 $title = $this->getTitle();
+                $left = $this->getLeftSideTitle();
+                $right = $this->getRightSideTitle();
 
                 if ($title != "") {
-                    print '<div class="__title-container"><h1>' . $title . '</h1></div>';
+                    print '<div class="__title-container">
+                                ' . $left . '
+                               <h1>' . $title . '</h1>
+                               ' . $right . '
+                           </div>';
                 }
                 ?>
         <?php
