@@ -34,7 +34,15 @@ bridge.prototype.attachEvents = function () {
             slideRight();
             event.preventDefault();
             return false;
-        })
+        });
+
+        if( window.location.hash )
+        {
+            current = parseInt( window.location.hash.replace( "#", "" ) );
+            slideTo( current, 1000 );
+            clearSelected( 'thumbnail-image' );
+            $( '#img' + current).addClass( 'selected' );
+        }
     });
 
     $( '.thumbnail-image' ).click( function( event )
@@ -95,7 +103,6 @@ bridge.prototype.attachEvents = function () {
         }
         var image = $( '#img' + current );
         image.click();
-        image.parent().parent().animate( { 'margin-left' : '-=' + image.width() + 'px' } )
     }
 
     function slideLeft()
@@ -112,7 +119,6 @@ bridge.prototype.attachEvents = function () {
         }
         var image = $( '#img' + current );
 	    image.click();
-        image.parent().parent().animate( { 'margin-left' : '+=' + image.width() + 'px' } )
     }
 
     function slideTo( index, speed )

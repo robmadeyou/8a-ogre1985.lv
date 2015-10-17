@@ -29,7 +29,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                     foreach( $this->images as $image )
                     {
                         $class = $counter === 0 ? 'selected' : '';
-                        print '<li><img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '"></li>';
+                        print '<li><a href="#' . $counter . '"><img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '"></a></li>';
                         $counter++;
                     }
                     ?>
@@ -84,7 +84,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                             </div>
                             <div class="comment-outer-text">
                                 <div class="comment-outer-title">
-                                    <span class="comment-inner-name">{$fullname}</span><span style="float: right;" class="comment-inner-date">{$comment->PostedAt}</span>
+                                    <span class="comment-inner-name">{$fullname}</span><span class="comment-inner-date">{$comment->PostedAt}</span>
                                 </div>
                                 <div class="comment-inner-text">{$comment->Comment}</div>
                             </div>

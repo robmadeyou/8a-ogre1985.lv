@@ -329,11 +329,11 @@ form
 {
     white-space: nowrap;
     overflow: hidden;
-    height: 120px;
     max-width: none !important;
     padding-left: 25px;
     padding-right: 25px;
     margin-bottom: 10px;
+    background-color: #696969;
 }
 
 .gallery-collection-images ul
@@ -446,4 +446,11 @@ form
 .list td:last-child
 {
     border-right: none;
+}
+
+.comment-inner-date
+{
+    font-style: normal;
+    color: #9c9c9c;
+    margin-left: 20px;
 }
