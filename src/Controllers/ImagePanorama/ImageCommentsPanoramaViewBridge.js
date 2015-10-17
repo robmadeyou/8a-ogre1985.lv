@@ -41,7 +41,12 @@ bridge.prototype.attachEvents = function () {
             current = parseInt( window.location.hash.replace( "#", "" ) );
             slideTo( current, 1000 );
             clearSelected( 'thumbnail-image' );
-            $( '#img' + current).addClass( 'selected' );
+            var img = $( '#img' + current);
+            img.addClass( 'selected' );
+            comments.finish();
+            comments.slideUp();
+            selectedImageID = img.attr( 'imgID' );
+            getComments();
         }
     });
 
