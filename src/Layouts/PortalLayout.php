@@ -3,10 +3,8 @@
 namespace Your\WebApp\Layouts;
 
 use Rhubarb\Crown\Html\ResourceLoader;
-use Rhubarb\Patterns\Layouts\BaseLayout;
-use Your\WebApp\LoginProviders\CustomLoginProvider;
 
-class PortalLayout extends BaseLayout
+class PortalLayout extends CustomBaseLayout
 {
     function __construct()
     {
