@@ -382,20 +382,6 @@ form
 
 .thumbnail-image
 {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    transition: filter 0.5s;
-    transition: -webkit-filter 0.5s;
-    transition-delay: 1s;
-}
-
-.thumbnail-image:hover
-{
-    animation: blur 2s;
-    animation-delay: 0.7s;
-    filter:blur('/static/media/blur.svg#blur');
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
 }
 
 .thumbnail-image.selected
