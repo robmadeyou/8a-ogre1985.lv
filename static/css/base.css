@@ -147,16 +147,31 @@ body {
 
 .__title-container
 {
+    padding: 0 0 6px 6px;
     position:relative;
     text-align: center;
-    width: 100%;
     clear: both;
+    background-color: white;
+}
+
+.__title-container.left h1
+{
+    text-align: left;
+}
+
+.__title-container.right h1
+{
+    text-align: right;
+}
+
+.__title-container.center h1
+{
+    text-align: center;
 }
 
 .__title-container h1
 {
-    font-size: 250%;
-    background-color: white;
+    font-size: 32px;
     color: black;
     margin: 0;
     clear: both;
@@ -357,7 +372,20 @@ form
 
 .thumbnail-image
 {
-    
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    transition: filter 0.5s;
+    transition: -webkit-filter 0.5s;
+    transition-delay: 1s;
+}
+
+.thumbnail-image:hover
+{
+    animation: blur 2s;
+    animation-delay: 0.7s;
+    filter:blur('/static/media/blur.svg#blur');
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
 }
 
 .thumbnail-image.selected
@@ -377,7 +405,7 @@ form
 
 .comments-section-new textarea
 {
-    width: 80%;
+    width: 91.254558563%;
 }
 
 .comments-section-new button
@@ -387,8 +415,9 @@ form
 
 .comment-outer
 {
-    width: 100%;
-    background: white;
+    padding: 12px 12px 12px 12px;
+    margin-bottom: 6px;
+    background-color: #F3F3F3;
 }
 
 .comment-outer-text
@@ -400,13 +429,21 @@ form
 .comment-outer-image
 {
     width: 7%;
+    max-width: 50px;
     height: 50px;
     float: left;
+    padding-right: 12px;
+}
+
+.comments-title
+{
+    text-align: left;
 }
 
 .comment-outer-image img
 {
     height: 100%;
+    max-width: 100%;
 }
 
 .comment-outer-title
@@ -453,8 +490,19 @@ form
     font-style: normal;
     color: #9c9c9c;
     margin-left: 6px;
-    font-size: 50%;
+    font-size: 9px;
+}
 
+.comment-inner-text
+{
+    font-size: 12px;
+}
+
+.comment-inner-name
+{
+    font-weight: bold;
+    font-size: 12px;
+    color: #167ac6;
 }
 
 .gallery-edit
@@ -462,4 +510,22 @@ form
     position: absolute;
     right: 0;
     top: 20px;
+}
+
+.thumbnail-image-container
+{
+    position: relative;
+}
+
+.thumbnail-image-container span
+{
+    position: absolute;
+    bottom: 0;
+    left:20px;
+    z-index: 50;
+}
+
+.thumbnail-image-container a
+{
+    z-index: 49;
 }

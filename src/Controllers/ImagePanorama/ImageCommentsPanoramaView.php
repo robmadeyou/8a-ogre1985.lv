@@ -14,7 +14,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
 
     protected function printViewContent()
     {
-
+        $user = CustomLoginProvider::getLoggedInUser();
         ?>
         <div class="__container" style="padding-bottom: 10px">
             <?php
@@ -29,7 +29,12 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                     foreach( $this->images as $image )
                     {
                         $class = $counter === 0 ? 'selected' : '';
-                        print '<li><a href="#' . $counter . '"><img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '"></a></li>';
+                        print '<li class="thumbnail-image-container">
+                                    <a href="#' . $counter . '">
+                                        <img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '">
+                                    </a>
+                                    <span>5 komenti</span>
+                               </li>';
                         $counter++;
                     }
                     ?>
@@ -38,17 +43,20 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         </div>
         <div class="comments-section">
             <div class="__title-container">
-                <h1 class="title" style="text-align: center">Komentāri</h1>
+                <h1 class="comments-title">Komentāri</h1>
             </div>
-            <div class="comments-bound">
+            <div class="comments-bound __container noSpace">
                 <?php
                     self::getCommentsForImageID( $this->images[0]->ImageID );
                 ?>
             </div>
             <div class="comments-section-new __container">
-                <h1>Pievienot jaunu Komentāru</h1>
+                <div class="comment-outer-image">
+                    <img src="<?= $user->Image ?>">
+                </div>
                 <textarea id="comment-input"></textarea>
                 <button type="submit" id="comment-input-submit">Pievienot</button>
+                <div class="__clear-floats"></div>
             </div>
         </div>
         <?php
