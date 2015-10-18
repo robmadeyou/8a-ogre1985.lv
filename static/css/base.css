@@ -139,7 +139,6 @@ body {
 #portal-title
 {
     position: relative;
-    width: 100%;
     min-height: 50px;
     max-height: 100px;
     padding-bottom: 16px;
@@ -374,7 +373,6 @@ form
 
 .comments-section-new
 {
-    width: 100%;
 }
 
 .comments-section-new textarea
