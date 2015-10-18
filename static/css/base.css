@@ -12,6 +12,17 @@
     font-style: normal;
 }
 
+p, span, b, h1, h2, h3, h4, h5, a
+{
+    font-family: OpenSans;
+    /*font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/
+}
+
+p, span, b, a
+{
+    font-size: 13px;
+}
+
 
 body, #login-panel-bg {
     background-image: url('/static/images/background.jpg');
@@ -345,9 +356,8 @@ form
     white-space: nowrap;
     overflow: hidden;
     max-width: none !important;
-    padding-left: 25px;
-    padding-right: 25px;
     margin-bottom: 10px;
+    padding-bottom: 10px;
     background-color: #696969;
 }
 
@@ -520,7 +530,8 @@ form
 .thumbnail-image-container span
 {
     position: absolute;
-    bottom: 0;
+    color: white;
+    bottom: -15px;
     left:20px;
     z-index: 50;
 }

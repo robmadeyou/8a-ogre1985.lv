@@ -28,11 +28,14 @@ class ImageCommentsPanorama extends ImagePanorama
 
         $this->view->attachEventHandler( 'PostComment', function( $commentText, $imageID )
         {
-            $comment = new Comment();
-            $comment->ImageID = $imageID;
-            $comment->Comment = $commentText;
-            $comment->PostedBy = CustomLoginProvider::getLoggedInUser()->UserID;
-            $comment->save();
+            if( $commentText != "" )
+            {
+                $comment = new Comment();
+                $comment->ImageID = $imageID;
+                $comment->Comment = $commentText;
+                $comment->PostedBy = CustomLoginProvider::getLoggedInUser()->UserID;
+                $comment->save();
+            }
         });
 
         $this->view->attachEventHandler( 'GetComments', function ( $imageID )

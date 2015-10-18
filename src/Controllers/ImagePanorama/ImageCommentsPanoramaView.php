@@ -4,6 +4,7 @@ namespace Your\WebApp\Controllers\ImagePanorama;
 
 use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
 use Rhubarb\Stem\Filters\Equals;
+use Rhubarb\Stem\Repositories\MySql\MySql;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Comment;
 use Your\WebApp\Model\CustomUser;
@@ -29,11 +30,13 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                     foreach( $this->images as $image )
                     {
                         $class = $counter === 0 ? 'selected' : '';
+                        $commentNums = MySql::returnSingleValue( "SELECT COUNT( CommentID ) FROM tblComment WHERE ImageID = '" . $image->ImageID . "'" );
+                        $commentNums = $commentNums == 1 ? $commentNums . " komentārs" : $commentNums . "komentāri";
                         print '<li class="thumbnail-image-container">
                                     <a href="#' . $counter . '">
                                         <img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->Source. '">
                                     </a>
-                                    <span>5 komenti</span>
+                                    <span>' . $commentNums . ' </span>
                                </li>';
                         $counter++;
                     }
