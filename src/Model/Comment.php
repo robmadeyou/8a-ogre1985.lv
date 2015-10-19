@@ -30,7 +30,7 @@ class Comment extends Model
             new Integer( 'PostedBy' ),
             new DateTime( 'PostedAt' ),
             new Integer( 'ForComment' ),
-            new Integer( 'InReplyTo' )
+            new Integer( 'InReplyTo', 0 )
         );
 
         return $schema;

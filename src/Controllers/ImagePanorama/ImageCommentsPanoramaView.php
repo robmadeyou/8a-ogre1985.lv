@@ -86,13 +86,48 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         $builder = "";
         foreach( $comments as $comment )
         {
-            if( $comment && $comment->PostedFor >= 0 )
+            if( $comment->InReplyTo == null )
             {
-                $user = new CustomUser( $comment->PostedBy );
-                $fullname = ucwords( $user->getFullName() );
-                $com = nl2br( $comment->Comment );
-                $date = $comment->Comment;
-                $builder .= <<<HTML
+                $builder .= self::getCommentsForCommentID( $comment, $print );
+            }
+        }
+
+        if( $print )
+        {
+            print $builder;
+        }
+        else
+        {
+            return $builder;
+        }
+    }
+
+    public static function getCommentsForCommentID( $id )
+    {
+        if( is_int( $id ) || is_string( $id ) )
+        {
+            $comment = new Comment( $id );
+        }
+        else
+        {
+            $comment = $id;
+        }
+
+        $builder = "";
+
+        $user = new CustomUser( $comment->PostedBy );
+        $fullname = ucwords( $user->getFullName() );
+        $subCommentBuilder = "";
+
+        $comments = Comment::find( new Equals( 'InReplyTo', $comment->UniqueIdentifier ) );
+
+        foreach( $comments as $c )
+        {
+            $subCommentBuilder .= self::getCommentsForCommentID( $c->CommentID );
+        }
+
+        $com = nl2br( $comment->Comment );
+        $builder .= <<<HTML
                         <div class="comment-outer">
                             <div class="comment-outer-image">
                                 <img src="{$user->Image}">
@@ -102,21 +137,15 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                                     <span class="comment-inner-name">{$fullname}</span><span class="comment-inner-date">{$date}</span>
                                 </div>
                                 <div class="comment-inner-text">{$com}</div>
+                                <a href="#">Atbildēt</a>
                             </div>
                             <div class="__clear-floats"></div>
+                            {$subCommentBuilder}
                          </div>
                          <div class="__clear-floats"></div>
 HTML;
-            }
-        }
-        if( $print )
-        {
-            print $builder;
-        }
-        else
-        {
-            return $builder;
-        }
+
+        return $builder;
     }
 
 
