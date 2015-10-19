@@ -10,7 +10,7 @@ class MyProfileEditView extends MyProfileAddView
     protected function printViewContent()
     {
         $html = new HtmlPageSettings();
-        $html->PageTitle = 'Manīt profilu';
+        $html->PageTitle = 'Mainīt profilu';
         ?>
             <div class="__container">
                 <?=
