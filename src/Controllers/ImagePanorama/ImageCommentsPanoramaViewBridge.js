@@ -36,7 +36,7 @@ bridge.prototype.attachEvents = function () {
             return false;
         });
 
-        if( window.location.hash )
+        if( window.location.hash && window.location.hash != "#0" )
         {
             current = parseInt( window.location.hash.replace( "#", "" ) );
             slideTo( current, 1000 );

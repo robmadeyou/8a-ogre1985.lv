@@ -129,12 +129,13 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         $com = nl2br( $comment->Comment );
         $builder .= <<<HTML
                         <div class="comment-outer">
+                            <div class="comment-background-underlay"></div>
                             <div class="comment-outer-image">
                                 <img src="{$user->Image}">
                             </div>
                             <div class="comment-outer-text">
                                 <div class="comment-outer-title">
-                                    <span class="comment-inner-name">{$fullname}</span><span class="comment-inner-date">{$date}</span>
+                                    <span class="comment-inner-name">{$fullname}</span><span class="comment-inner-date">{$comment->PostedAt}</span>
                                 </div>
                                 <div class="comment-inner-text">{$com}</div>
                                 <a href="#">Atbildēt</a>
