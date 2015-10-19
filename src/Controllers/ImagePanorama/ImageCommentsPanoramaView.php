@@ -88,6 +88,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         {
             $user = new CustomUser( $comment->PostedBy );
             $fullname = ucwords( $user->getFullName() );
+            $comment = nl2br( $comment->Comment );
             $builder .= <<<HTML
                         <div class="comment-outer">
                             <div class="comment-outer-image">
@@ -97,7 +98,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                                 <div class="comment-outer-title">
                                     <span class="comment-inner-name">{$fullname}</span><span class="comment-inner-date">{$comment->PostedAt}</span>
                                 </div>
-                                <div class="comment-inner-text">{$comment->Comment}</div>
+                                <div class="comment-inner-text">{$comment}</div>
                             </div>
                             <div class="__clear-floats"></div>
                          </div>

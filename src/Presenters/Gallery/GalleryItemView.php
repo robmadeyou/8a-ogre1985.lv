@@ -25,7 +25,14 @@ class GalleryItemView extends CrudView
         $model = $this->raiseEvent( 'GetRestModel' );
 
         $html = new HtmlPageSettings();
-        $html->PageTitle = htmlspecialchars( $model->Title );
+        if( $model->Title )
+        {
+            $html->PageTitle = htmlspecialchars( $model->Title );
+        }
+        else
+        {
+            $html->PageTitle = "&nbsp;";
+        }
         $html->PageRightTitle = ' <span class="gallery-edit"><a href="edit/">Mainit</a></span>';
 
         print $this->presenters[ 'SlideView' ];
