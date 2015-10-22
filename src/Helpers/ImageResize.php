@@ -8,10 +8,15 @@ class ImageResize
     public static function resizeIntoMultipleFormats( $file )
     {
         $sizes = [
-            [ 250, 150 ],
-            [ ]
+            [ 0, 150 ],
+            [ 0, 520 ]
         ];
-        self::smart_resize_image( $file, 0, 150, true );
+
+        foreach( $sizes as $key => $size )
+        {
+            $name = $file . 'x' . $key;
+            self::smart_resize_image( $file, $size[ 0 ], $size[ 1 ], true, $name );
+        }
     }
     /**
      * easy image resize function
