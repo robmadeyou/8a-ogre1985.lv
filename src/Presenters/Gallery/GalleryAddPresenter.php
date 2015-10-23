@@ -6,6 +6,7 @@ use Rhubarb\Crown\Exceptions\ForceResponseException;
 use Rhubarb\Crown\Layout\LayoutModule;
 use Rhubarb\Crown\Response\RedirectResponse;
 use Rhubarb\Patterns\Mvp\Crud\ModelForm\ModelFormPresenter;
+use Your\WebApp\Helpers\ImageResize;
 use Your\WebApp\Layouts\PortalLayout;
 use Your\WebApp\Model\Image;
 

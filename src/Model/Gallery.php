@@ -48,11 +48,14 @@ class Gallery extends Model
 
     public function getDefaultImage()
     {
-        //return $this->DefaultImageID;
         if( $this->DefaultImageID && $this->DefaultImageID !== 0 )
         {
-                return (new Image( $this->DefaultImageID ))->Source;
+            $id = $this->DefaultImageID;
         }
-        return MySql::returnSingleValue( "SELECT Source FROM tblImage WHERE GalleryID = :GalleryID", [ "GalleryID" => $this->GalleryID ]);
+        else
+        {
+            $id = MySql::returnSingleValue( "SELECT ImageID FROM tblImage WHERE GalleryID = :GalleryID", [ "GalleryID" => $this->GalleryID ]);
+        }
+        return (new Image( $id ))->GetResizedImage( 1 );
     }
 }

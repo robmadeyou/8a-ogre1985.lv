@@ -2,7 +2,6 @@
 
 namespace Your\WebApp\Model;
 
-use Rhubarb\Crown\DateTime\RhubarbDateTime;
 use Rhubarb\Stem\Models\Model;
 use Rhubarb\Stem\Schema\Columns\AutoIncrement;
 use Rhubarb\Stem\Schema\Columns\DateTime;
@@ -33,6 +32,21 @@ class Image extends Model
             );
 
         return $schema;
+    }
+
+    public function GetResizedImage( $size = 0 )
+    {
+        $ext = substr( $this->Source, -3 );
+        $beginning = '/static/images/uploaded/x';
+        switch( $size )
+        {
+            case 1:
+                return "{$beginning}0{$this->UniqueIdentifier}.{$ext}";
+            case 2:
+                return "{$beginning}1{$this->UniqueIdentifier}.{$ext}";
+            default:
+                return $this->Source;
+        }
     }
 
     protected function beforeSave()

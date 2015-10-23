@@ -1,11 +1,11 @@
 <?php
 
-namespace Your\WebApp\Presenters\Helpers;
+namespace Your\WebApp\Helpers;
 
 class ImageResize
 {
 
-    public static function resizeIntoMultipleFormats( $file )
+    public static function resizeIntoMultipleFormats( $file, $directory )
     {
         $sizes = [
             [ 0, 150 ],
@@ -14,8 +14,8 @@ class ImageResize
 
         foreach( $sizes as $key => $size )
         {
-            $name = $file . 'x' . $key;
-            self::smart_resize_image( $file, $size[ 0 ], $size[ 1 ], true, $name );
+            $name = $directory . 'x' . $key . $file;
+            self::smart_resize_image( $directory . $file, "", $size[ 0 ], $size[ 1 ], true, $name, false );
         }
     }
     /**

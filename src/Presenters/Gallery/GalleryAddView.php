@@ -6,6 +6,7 @@ use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Controls\FileUpload\DragAndDropFileUploadPresenter;
 use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
+use Your\WebApp\Helpers\ImageResize;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Image;
 
@@ -92,6 +93,8 @@ class GalleryAddView extends CrudView
 
             rename( $location,
                 'static/images/uploaded/' . $discussion->UniqueIdentifier . '.' . $info[ 'extension' ] );
+
+            ImageResize::resizeIntoMultipleFormats( $discussion->UniqueIdentifier . '.' . $info[ 'extension' ], 'static/images/uploaded/' );
 
             self::$createdImagesForGallery[] = $discussion->ImageID;
         }

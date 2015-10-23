@@ -6,6 +6,7 @@ use Rhubarb\Leaf\Views\JQueryView;
 use Rhubarb\Stem\Repositories\MySql\MySql;
 use Your\WebApp\Controllers\GalleryController\GalleryPresenter;
 use Your\WebApp\Controllers\ImagePanorama\ImagePanorama;
+use Your\WebApp\Helpers\ImageResize;
 use Your\WebApp\Model\Gallery;
 
 class PortalView extends JQueryView
