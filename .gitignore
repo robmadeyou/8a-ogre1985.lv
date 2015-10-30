@@ -3,3 +3,8 @@
 /deployed/
 /vendor/
 /composer.lock
+/cache/
+/usrdata/
+/static/images/uploaded/
+/static/images/usrimgs/
+
