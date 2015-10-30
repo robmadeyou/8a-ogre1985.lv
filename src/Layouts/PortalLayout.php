@@ -15,7 +15,7 @@ class PortalLayout extends CustomBaseLayout
     protected function printPageHeading()
     {
         ?>
-    <script src="/static/scripts/dropzone.js"></script>
+        <script src="/static/scripts/dropzone.js"></script>
         <style>
             body
             {
