@@ -15,6 +15,37 @@ class PortalLayout extends CustomBaseLayout
     protected function printPageHeading()
     {
         ?>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Ogres 1. Vidusskola</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Majas<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Galerijas</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mans Profils<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Mainit profilu</a></li>
+                                <li><a href="#">Manas bildes</a></li>
+                                <li><a href="#">Notifikacijas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Iziet</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="portal-body">
+        <?php
+    }
+    protected function printPageHeadingTwo()
+    {
+        ?>
         <script src="/static/scripts/dropzone.js"></script>
         <style>
             body

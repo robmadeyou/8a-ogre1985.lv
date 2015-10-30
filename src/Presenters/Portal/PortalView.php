@@ -35,12 +35,14 @@ class PortalView extends JQueryView
                 Galerijas
             </h1>
             <a href="gallery/add/" style="margin-top: -30px; float: right;">Pievienot jaunu galeriju</a>
-            <?php
-            foreach( $discussions as $discussion )
-            {
-                print new GalleryPresenter( $discussion );
-            }
-            ?>
+            <div class="row">
+                <?php
+                foreach( $discussions as $discussion )
+                {
+                    print new GalleryPresenter( $discussion );
+                }
+                ?>
+            </div>
             <div class="__clear-floats"></div>
         </div>
 
