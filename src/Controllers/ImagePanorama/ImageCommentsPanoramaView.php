@@ -44,23 +44,31 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                 </ul>
             </div>
         </div>
-        <div class="comments-section">
-            <div class="__title-container">
-                <h1 class="comments-title">Komentāri</h1>
-            </div>
-            <div class="comments-bound __container noSpace">
-                <?php
-                    self::getCommentsForImageID( $this->images[0]->ImageID );
-                ?>
-            </div>
-            <div class="comments-section-new __container">
-                <div class="comment-outer-image">
-                    <img src="<?= $user->Image ?>">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="__container">
+
                 </div>
-                <textarea id="comment-input"></textarea>
-                <button type="submit" id="comment-input-submit">Pievienot</button>
-                <div class="__clear-floats"></div>
             </div>
+            <div class="comments-section col-md-8">
+                <div class="__title-container">
+                    <h1 class="comments-title">Komentāri</h1>
+                </div>
+                <div class="comments-bound __container noSpace">
+                    <?php
+                        self::getCommentsForImageID( $this->images[0]->ImageID );
+                    ?>
+                </div>
+                <div class="comments-section-new __container">
+                    <div class="comment-outer-image">
+                        <img src="<?= $user->Image ?>">
+                    </div>
+                    <textarea id="comment-input"></textarea>
+                    <button type="submit" id="comment-input-submit">Pievienot</button>
+                    <div class="__clear-floats"></div>
+                </div>
+            </div>
+
         </div>
         <?php
     }

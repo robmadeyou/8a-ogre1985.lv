@@ -37,6 +37,11 @@ body {
     margin: 0;
 }
 
+.navbar
+{
+    margin-bottom: 0px;
+}
+
 #login-panel {
     text-align: center;
     margin-top: 250px;
@@ -202,6 +207,11 @@ body {
     margin-bottom: 0;
 }
 
+.__container.noPadding
+{
+    padding-bottom: 0;
+}
+
 .__container.comment
 {
     padding: 16px 16px 16px 16px;
@@ -255,27 +265,12 @@ form
     height: 43px;
 }
 
-#gallery-thumbnail
-{
-    float:left;
-    width: 200px;
-    height: 150px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-}
 
 .gallery-title
 {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     height: 18px;
-}
-
-#discussion-full-width img, #gallery-thumbnail img
-{
-    width: 100%;
-    height:100%;
 }
 
 .image-panorama
@@ -299,18 +294,21 @@ form
     height: 100%;
 }
 
-.image-panorama-navigation button
+.image-panorama-navigation span
+{
+    font-size: 5vh;
+}
+
+.image-panorama-navigation a
 {
     position: absolute;
     height: 50px;
-    width: 70px;
     top: 40%;
-    bottom: 40%;
     opacity: 0.4;
     transition: opacity 0.4s;
 }
 
-.image-panorama-navigation button:hover
+.image-panorama-navigation a:hover
 {
     opacity: 1;
 }
@@ -505,11 +503,18 @@ form
     color: #167ac6;
 }
 
-.gallery-edit
+.right-side-title
 {
     position: absolute;
-    right: 0;
-    top: 20px;
+    right: 8px;
+    top: 30%;
+}
+
+.left-side-title
+{
+    position: absolute;
+    left: 8px;
+    top: 30%;
 }
 
 .thumbnail-image-container

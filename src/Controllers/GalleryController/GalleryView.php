@@ -15,10 +15,10 @@ class GalleryView extends HtmlView
     protected function printViewContent()
     {
         ?>
-            <div class="col-xs-6 col-md-3">
-                <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><p class="gallery-title"><?= htmlspecialchars( $this->gallery->Title ) ?></p></a>
-                <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><img src="<?= $this->gallery->getDefaultImage() ?>"></a>
-            </div>
+        <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><p
+                class="gallery-title"><?= htmlspecialchars( $this->gallery->Title ) ?></p></a>
+        <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><img style="width: 100%; height: 100%;"
+                src="<?= $this->gallery->getDefaultImage() ?>"></a>
         <?php
     }
 }

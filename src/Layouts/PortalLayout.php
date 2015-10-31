@@ -8,22 +8,29 @@ class PortalLayout extends CustomBaseLayout
 {
     function __construct()
     {
-        ResourceLoader::loadResource( "/static/css/base.css" );
+        parent::__construct();
         ResourceLoader::loadResource( "/static/css/dropzone.css" );
+        ResourceLoader::loadResource( "/static/scripts/dropzone.js" );
     }
 
     protected function printPageHeading()
     {
         ?>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <style>
+            body
+            {
+                background-image: url("/static/images/background-blur.jpg");
+            }
+        </style>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Ogres 1. Vidusskola</a>
+                    <a class="navbar-brand" href="/">Ogres 1. Vidusskola</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Majas<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Galerijas</a></li>
+                        <li><a href="/portal/"><span class="glyphicon glyphicon-home"></span> Majas</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-picture"></span> Galerijas</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -42,17 +49,22 @@ class PortalLayout extends CustomBaseLayout
         </nav>
         <div id="portal-body">
         <?php
+            $title = $this->getTitle();
+            $left = $this->getLeftSideTitle();
+            $right = $this->getRightSideTitle();
+
+             if ($title != "") {
+                 print '<div class="__title-container">
+                             <span class="left-side-title">' . $left . '</span>
+                            <h1>' . $title . '</h1>
+                            <span class="right-side-title">' . $right . '</span>
+                        </div>';
+             }
     }
     protected function printPageHeadingTwo()
     {
         ?>
-        <script src="/static/scripts/dropzone.js"></script>
-        <style>
-            body
-            {
-                background-image: url("/static/images/background-blur.jpg");
-            }
-        </style>
+
         <div id="content">
             <div id="portal-body">
                 <div id="portal-title" class="__container noSpace">
@@ -107,9 +119,11 @@ class PortalLayout extends CustomBaseLayout
 
         ?>
         </div>
-        <div id="tail">
-
-        </div>
+        <footer class="footer">
+            <div class="container">
+                HELLO!
+            </div>
+        </footer>
         <?php
     }
 }
