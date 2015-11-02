@@ -31,10 +31,11 @@ class PortalLayout extends CustomBaseLayout
                     <ul class="nav navbar-nav">
                         <li><a href="/portal/"><span class="glyphicon glyphicon-home"></span> Majas</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-picture"></span> Galerijas</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-sunglasses"></span> Kontakti</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mans Profils<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Mans Profils<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Mainit profilu</a></li>
                                 <li><a href="#">Manas bildes</a></li>

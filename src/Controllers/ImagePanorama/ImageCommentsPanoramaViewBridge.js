@@ -13,6 +13,7 @@ bridge.prototype.attachEvents = function () {
     var selectedImageID = $( $( '.thumbnail-image' )[0] ).attr( 'imgID' );
     var comments = $( '.comments-bound');
 
+    hookIntoReplyEvents();
     $( '.image-panorama').hover( function()
     {
         mouseOver = true;
@@ -43,8 +44,6 @@ bridge.prototype.attachEvents = function () {
             clearSelected( 'thumbnail-image' );
             var img = $( '#img' + current);
             img.addClass( 'selected' );
-            comments.finish();
-            comments.slideUp();
             selectedImageID = img.attr( 'imgID' );
             getComments();
         }
@@ -52,8 +51,6 @@ bridge.prototype.attachEvents = function () {
 
     $( '.thumbnail-image' ).click( function( event )
     {
-        comments.finish();
-        comments.slideUp();
         clearSelected( 'thumbnail-image' );
         $( this ).addClass( 'selected' );
         selectedImageID = $( this ).attr( 'imgID' );
@@ -72,14 +69,24 @@ bridge.prototype.attachEvents = function () {
         self.raiseServerEvent( 'GetComments', id, function( data )
         {
             comments.html( data );
-            comments.slideDown();
+           hookIntoReplyEvents();
         });
+    }
+
+    function hookIntoReplyEvents()
+    {
+        $( '.comment-reply' ).click( function( data )
+        {
+            $( this ).after( 'stiff' );
+
+            data.preventDefault();
+            return false;
+        })
     }
 
     $( '#comment-input-submit').click( function( event )
     {
         var a = $( '#comment-input' );
-        comments.slideUp();
         self.raiseServerEvent( 'PostComment', a.val(), selectedImageID, function( data )
         {
             a.val( '' );

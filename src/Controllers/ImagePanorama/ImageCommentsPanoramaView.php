@@ -8,6 +8,7 @@ use Rhubarb\Stem\Repositories\MySql\MySql;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Comment;
 use Your\WebApp\Model\CustomUser;
+use Your\WebApp\Model\Gallery;
 
 class ImageCommentsPanoramaView extends ImagePanoramaView
 {
@@ -16,6 +17,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
     protected function printViewContent()
     {
         $user = CustomLoginProvider::getLoggedInUser();
+
         ?>
         <div class="__container" style="padding-bottom: 10px">
             <?php
@@ -46,8 +48,8 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="__container">
-
+                <div class="__container center-align">
+                    <img class="img-circle" src="<?= $user->Image ?>" alt="Generic placeholder image" width="140" height="140">
                 </div>
             </div>
             <div class="comments-section col-md-8">
@@ -110,6 +112,11 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         }
     }
 
+    public static function getUploadedByInfo( $imageID )
+    {
+
+    }
+
     public static function getCommentsForCommentID( $id )
     {
         if( is_int( $id ) || is_string( $id ) )
@@ -146,7 +153,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                                     <span class="comment-inner-name">{$fullname}</span><span class="comment-inner-date">{$comment->PostedAt}</span>
                                 </div>
                                 <div class="comment-inner-text">{$com}</div>
-                                <a href="#">Atbildēt</a>
+                                <a href="#" comId="{$comment->UniqueIdentifier}" class="comment-reply">Atbildēt</a>
                             </div>
                             <div class="__clear-floats"></div>
                             {$subCommentBuilder}
