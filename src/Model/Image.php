@@ -36,7 +36,7 @@ class Image extends Model
 
     public function GetResizedImage( $size = 0 )
     {
-        $ext = substr( $this->Source, -3 );
+        $ext = str_replace( '.', '', substr( $this->Source, -4 ) );
         $beginning = '/static/images/uploaded/x';
         switch( $size )
         {
