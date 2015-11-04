@@ -3,12 +3,14 @@
 namespace Your\WebApp\Controllers\ImagePanorama;
 
 use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
+use Rhubarb\Stem\Exceptions\RecordNotFoundException;
 use Rhubarb\Stem\Filters\Equals;
 use Rhubarb\Stem\Repositories\MySql\MySql;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Comment;
 use Your\WebApp\Model\CustomUser;
 use Your\WebApp\Model\Gallery;
+use Your\WebApp\Model\Image;
 
 class ImageCommentsPanoramaView extends ImagePanoramaView
 {
@@ -17,6 +19,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
     protected function printViewContent()
     {
         $user = CustomLoginProvider::getLoggedInUser();
+        $firstImg = 0;
 
         ?>
         <div class="__container" style="padding-bottom: 10px">
@@ -31,6 +34,11 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                     $counter = 0;
                     foreach( $this->images as $image )
                     {
+                        if( $firstImg === 0 )
+                        {
+                            $firstImg = $image->ImageID;
+                        }
+
                         $class = $counter === 0 ? 'selected' : '';
                         $commentNums = MySql::returnSingleValue( "SELECT COUNT( CommentID ) FROM tblComment WHERE ImageID = '" . $image->ImageID . "'" );
                         $commentNums = $commentNums == 1 ? $commentNums . " komentārs" : $commentNums . " komentāri";
@@ -48,8 +56,15 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="__container center-align">
-                    <img class="img-circle" src="<?= $user->Image ?>" alt="Generic placeholder image" width="140" height="140">
+                <div class="__container">
+                    <div class="row">
+                        <div class="col-xs-6 center-align">
+                            <a href="#"><span class="glyphicon glyphicon-save"></span> Lejupladed </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="__container center-align uploaded-by-section" style="padding-top: 6px;">
+                    <?= $this->getUploadedByInfo( $firstImg ) ?>
                 </div>
             </div>
             <div class="comments-section col-md-8">
@@ -114,7 +129,20 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
 
     public static function getUploadedByInfo( $imageID )
     {
-
+        try
+        {
+            $image = new Image( $imageID );
+            $uploader = new CustomUser( $image->UploadedBy );
+            $html = <<<HTML
+            <img class="img-circle" src="{$uploader->Image}" alt="Generic placeholder image" width="140" height="140">
+            <h1>{$uploader->getFullName()}</h1>
+HTML;
+            return $html;
+        }
+        catch( RecordNotFoundException $ex )
+        {
+            return "Atvainoiet";
+        }
     }
 
     public static function getCommentsForCommentID( $id )

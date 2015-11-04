@@ -19,7 +19,7 @@ class GalleryView extends HtmlView
     protected function printViewContent()
     {
         ?>
-        <a href="<?= $this->gallery->UniqueIdentifier ?>">
+        <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/">
             <div class="gallery-overlay">
                 <p>
                     <?= Image::find( new Equals( 'GalleryID', $this->gallery->UniqueIdentifier ))->calculateAggregates( new Count( 'ImageID' ) )[0]?> bildes
