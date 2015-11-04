@@ -3,7 +3,11 @@
 namespace Your\WebApp\Controllers\GalleryController;
 
 use Rhubarb\Leaf\Views\HtmlView;
+use Rhubarb\Stem\Aggregates\Count;
+use Rhubarb\Stem\Aggregates\Sum;
+use Rhubarb\Stem\Filters\Equals;
 use Your\WebApp\Model\Gallery;
+use Your\WebApp\Model\Image;
 
 class GalleryView extends HtmlView
 {
@@ -17,6 +21,9 @@ class GalleryView extends HtmlView
         ?>
         <a href="<?= $this->gallery->UniqueIdentifier ?>">
             <div class="gallery-overlay">
+                <p>
+                    <?= Image::find( new Equals( 'GalleryID', $this->gallery->UniqueIdentifier ))->calculateAggregates( new Count( 'ImageID' ) )[0]?> bildes
+                </p>
             </div>
         </a>
         <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/"><p
