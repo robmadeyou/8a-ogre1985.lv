@@ -2,6 +2,7 @@
 
 namespace Your\WebApp\Presenters\Portal;
 
+use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Views\JQueryView;
 use Rhubarb\Stem\Repositories\MySql\MySql;
 use Your\WebApp\Controllers\GalleryController\GalleryPresenter;
@@ -31,11 +32,11 @@ class PortalView extends JQueryView
             <?= new ImagePanorama( $images )?>
         </div>
         <div class="discussion-group __container noSpace">
-            <div class="center-block clearfix">
+            <div class="center-block clearfix relative">
                 <h1 style="text-align: center">
                     Top 5 Galerijas
                 </h1>
-                <a href="gallery/add/" class="btn btn-primary pull-right">Pievienot jaunu galeriju</a>
+                <a href="gallery/add/" class="btn btn-primary right-side-title">Pievienot jaunu galeriju</a>
             </div>
             <div class="row" style="height: 150px;">
                 <?php

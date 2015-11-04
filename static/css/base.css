@@ -64,10 +64,10 @@ body {
     text-align: center;
     right: 16px;
     left: 16px;
-    bottom: 0px;
+    bottom: 0;
     top: 16px;
     position: absolute;
-    padding-top: 40%;
+    padding-top: 20%;
     background-color: #000000;
     opacity: 0.0;
     -webkit-transition: opacity 0.7s;
@@ -107,6 +107,11 @@ body {
     color: #fefefe;
     z-index: 98;
 
+}
+
+.relative
+{
+    position: relative;
 }
 
 #login-panel-bg {

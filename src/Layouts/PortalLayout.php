@@ -22,14 +22,14 @@ class PortalLayout extends CustomBaseLayout
                 background-image: url("/static/images/background-blur.jpg");
             }
         </style>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">Ogres 1. Vidusskola</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/portal/"><span class="glyphicon glyphicon-home"></span> Majas</a></li>
+                        <li><a href="/portal/"><span class="glyphicon glyphicon-home"></span> Mājas</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-picture"></span> Galerijas</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-sunglasses"></span> Kontakti</a></li>
                     </ul>
@@ -37,11 +37,11 @@ class PortalLayout extends CustomBaseLayout
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Mans Profils<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Mainit profilu</a></li>
+                                <li><a href="#">Mainīt profilu</a></li>
                                 <li><a href="#">Manas bildes</a></li>
-                                <li><a href="#">Notifikacijas</a></li>
+                                <li><a href="#">Notifikācijas</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Iziet</a></li>
+                                <li><a href="/portal/logout/">Iziet</a></li>
                             </ul>
                         </li>
                     </ul>
