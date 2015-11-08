@@ -1,5 +1,5 @@
 <?php
-
+chdir( __DIR__ );
 include_once( '../Helpers/ImageResize.php' );
 
 $dirs = [
