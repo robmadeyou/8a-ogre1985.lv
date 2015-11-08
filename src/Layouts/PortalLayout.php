@@ -30,7 +30,7 @@ class PortalLayout extends CustomBaseLayout
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="/portal/"><span class="glyphicon glyphicon-home"></span> Mājas</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-picture"></span> Galerijas</a></li>
+                        <li><a href="/portal/gallery/"><span class="glyphicon glyphicon-picture"></span> Galerijas</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-sunglasses"></span> Kontakti</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
