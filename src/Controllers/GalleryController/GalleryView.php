@@ -22,7 +22,11 @@ class GalleryView extends HtmlView
         <a href="/portal/gallery/<?= $this->gallery->UniqueIdentifier ?>/">
             <div class="gallery-overlay">
                 <p>
-                    <?= Image::find( new Equals( 'GalleryID', $this->gallery->UniqueIdentifier ))->calculateAggregates( new Count( 'ImageID' ) )[0]?> bildes
+                    <?php
+                    $images = Image::find( new Equals( 'GalleryID', $this->gallery->UniqueIdentifier ))->calculateAggregates( new Count( 'ImageID' ) )[0];
+                    $imgText = $images == 1 ? "bilde" : "bildes";
+                    print $images . ' ' . $imgText;
+                    ?>
                 </p>
             </div>
         </a>

@@ -48,15 +48,25 @@ class GalleryAddView extends CrudView
 
         ?>
         <div class="__container">
-            <a href="#" id="addPicturesLink">Pievienot bilde(s)</a>
-            Nosaukums: <?= $this->presenters[ 'Title' ] ?>
             <div id="dropzone">
                 <div action="/portal/gallery/add/" class="dropzone" id="demo-upload">
-                    <div class="dz-message">
-                        Iemet, vai spied šeit lai pievienotu bildes.<br />
+                    <div class="dz-message">Bildes paradisies seit<br />
                     </div>
                 </div>
             </div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nosaukums</label>
+                    <div class="col-sm-10">
+                        <?= $this->presenters[ 'Title' ] ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a href="#" class="btn btn-primary" id="addPicturesLink">Pievienot bilde(s)</a>
+                    </div>
+                </div>
+            </form>
         </div>
         <?php
 

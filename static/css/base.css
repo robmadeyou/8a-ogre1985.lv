@@ -62,10 +62,10 @@ body {
 .gallery-overlay
 {
     text-align: center;
-    right: 16px;
-    left: 16px;
+    right: 0;
+    left: 0;
     bottom: 0;
-    top: 16px;
+    top: 18px;
     position: absolute;
     padding-top: 20%;
     background-color: #000000;
