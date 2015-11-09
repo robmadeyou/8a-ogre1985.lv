@@ -40,4 +40,8 @@ class MyProfileAddPresenter extends ModelFormPresenter
     }
 
 
+    protected function redirectAfterCancel()
+    {
+        throw new ForceResponseException( new RedirectResponse( '/portal/' ) );
+    }
 }

@@ -9,24 +9,22 @@ class MyProfileEditView extends MyProfileAddView
 
     protected function printViewContent()
     {
+        parent::printViewContent();
         $html = new HtmlPageSettings();
         $html->PageTitle = 'Mainīt profilu';
-        ?>
-            <div class="__container">
-                <?=
-                 $this->printFieldset( "",
-                    [
-                        'Bilde' => 'Image',
-                        'Vārds' => 'Forename',
-                        'Uzvārds' => 'Surname',
-                        'Parole' => 'PasswordPlace',
-                        'E - pasts' => 'Email',
-                        $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
-                    ]);
-                ?>
-            </div>
-        <?php
-
     }
 
+    protected function printNiceInputs()
+    {
+        $currentImage = self::$model->Image ? '<img style="max-width:300px" src="' . self::$model->Image . '">' : '';
+        $this->printFieldset( "",
+            [
+                'Bilde' => $currentImage . $this->presenters[ 'Image' ],
+                'Vārds' => 'Forename',
+                'Uzvārds' => 'Surname',
+                'Parole' => 'PasswordPlace',
+                'E - pasts' => 'Email',
+                $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
+            ]);
+    }
 }

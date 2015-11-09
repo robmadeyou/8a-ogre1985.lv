@@ -5,13 +5,14 @@ namespace Your\WebApp\Presenters\MyProfile;
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Controls\FileUpload\SimpleImageUpload;
 use Rhubarb\Leaf\Presenters\Controls\Text\Password\Password;
+use Rhubarb\Leaf\Presenters\Controls\Text\TextBox\TextBox;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
 use Your\WebApp\Model\CustomUser;
 use Your\WebApp\Presenters\Gallery\GalleryAddPresenter;
 
 class MyProfileAddView extends CrudView
 {
-    private static $model;
+    protected static $model;
     public function createPresenters()
     {
         parent::createPresenters();
@@ -48,6 +49,14 @@ class MyProfileAddView extends CrudView
             new Password( 'PasswordPlace' )
         );
 
+        foreach( $this->presenters as $presenter )
+        {
+            if( $presenter instanceof TextBox )
+            {
+                $presenter->addCssClassName( 'form-control' );
+            }
+        }
+
         $this->presenters[ 'Save' ]->setButtonText( 'Saglabāt' );
         $this->presenters[ 'Cancel' ]->setButtonText( 'Atcelt' );
     }
@@ -56,10 +65,25 @@ class MyProfileAddView extends CrudView
     {
         $html = new HtmlPageSettings();
         $html->PageTitle = 'Pievienot jaunu profilu';
-        print "<div class='__container'>";
+        ?>
+            <div class='__container'>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <?php
+                        $this->printNiceInputs();
+                    ?>
+                </div>
+                <div class="__clear-floats"></div>
+            </div>
+        <?php
+    }
+
+    protected function printNiceInputs()
+    {
+        $currentImage = self::$model->Image ? '<img style="max-width:300px" src="' . self::$model->Image . '">' : '';
         $this->printFieldset( "",
             [
-                'Profila bilde' => 'Image',
+                'Profila bilde' => $currentImage . $this->presenters[ 'Image' ],
                 'Lietotāja vārds' => 'Username',
                 'Parole' => 'PasswordPlace',
                 'Vārds' => 'Forename',
@@ -67,7 +91,6 @@ class MyProfileAddView extends CrudView
                 'E - pasts' => 'Email',
                 $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
             ]);
-        print "</div>";
     }
 
 }

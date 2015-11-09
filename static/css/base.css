@@ -529,40 +529,6 @@ form
     font-weight: bold;
 }
 
-.list table
-{
-    width: 100%;
-    border-spacing: 0;
-}
-
-.list table tbody tr td
-{
-    text-align: center;
-}
-
-.list td
-{
-    border-right: 2px solid #d6d6d6;
-}
-
-.list td:last-child
-{
-    border-right: none;
-}
-
-.list th
-{
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border: 2px solid #d6d6d6;
-    border-left: none;
-}
-
-.list td:last-child
-{
-    border-right: none;
-}
-
 .comment-inner-date
 {
     font-style: normal;

@@ -37,7 +37,7 @@ class PortalLayout extends CustomBaseLayout
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Mans Profils<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Mainīt profilu</a></li>
+                                <li><a href="/users/">Mainīt profilu</a></li>
                                 <li><a href="#">Manas bildes</a></li>
                                 <li><a href="#">Notifikācijas</a></li>
                                 <li role="separator" class="divider"></li>
