@@ -14,6 +14,7 @@ use Rhubarb\Stem\Repositories\Repository;
 use Rhubarb\Stem\Schema\SolutionSchema;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Presenters\Img\ImgPresenter;
+use Your\WebApp\Presenters\Users\UsersPresenter;
 use Your\WebApp\UrlHandlers\ImageUrlHandler;
 
 class YourAppModule extends Module
@@ -45,6 +46,7 @@ class YourAppModule extends Module
                     'portal/' => new ClassMappedUrlHandler( 'Your\WebApp\Presenters\Portal\PortalPresenter', [
                         'gallery/' => new CrudUrlHandler( 'Gallery', 'Your\WebApp\Presenters\Gallery' ),
                         'image/'  => new CrudUrlHandler( 'Image', 'Your\WebApp\Presenters\Image' ),
+                        'users/' => new ClassMappedUrlHandler( UsersPresenter::class ),
                         'logout/' => new ClassMappedUrlHandler( 'Your\WebApp\Presenters\Logout\LogoutPresenter' )
                     ] ),
                     'img/' => new ImageUrlHandler( ImgPresenter::class ),
