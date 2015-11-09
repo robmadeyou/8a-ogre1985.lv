@@ -54,6 +54,7 @@ bridge.prototype.attachEvents = function () {
         clearSelected( 'thumbnail-image' );
         $( this ).addClass( 'selected' );
         selectedImageID = $( this ).attr( 'imgID' );
+        $( '#downloadButton' ).attr( 'href', '/img/?g=' + selectedImageID );
         var id = parseInt( $( this ).attr( 'thumb' ) );
 	    current = id;
         slideTo( id );
@@ -69,7 +70,7 @@ bridge.prototype.attachEvents = function () {
         self.raiseServerEvent( 'GetComments', id, function( data )
         {
             comments.html( data );
-           hookIntoReplyEvents();
+            hookIntoReplyEvents();
         });
     }
 
@@ -77,7 +78,7 @@ bridge.prototype.attachEvents = function () {
     {
         $( '.comment-reply' ).click( function( data )
         {
-            $( this ).after( 'stiff' );
+            $( this ).after( 'tests ' );
 
             data.preventDefault();
             return false;

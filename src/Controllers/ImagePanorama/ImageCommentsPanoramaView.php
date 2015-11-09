@@ -59,7 +59,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                 <div class="__container">
                     <div class="row">
                         <div class="col-xs-6 center-align">
-                            <a href="#"><span class="glyphicon glyphicon-save"></span> Lejupladed </a>
+                            <a href="/img/?g=<?= $this->images[0]->ImageID ?>" id="downloadButton" ><span class="glyphicon glyphicon-save"></span> Lejupladed </a>
                         </div>
                     </div>
                 </div>

@@ -6,12 +6,15 @@ use Rhubarb\Crown\Encryption\HashProvider;
 use Rhubarb\Crown\Layout\LayoutModule;
 use Rhubarb\Crown\Module;
 use Rhubarb\Crown\UrlHandlers\ClassMappedUrlHandler;
+use Rhubarb\Crown\UrlHandlers\StaticResourceUrlHandler;
 use Rhubarb\Patterns\Mvp\Crud\CrudUrlHandler;
 use Rhubarb\Scaffolds\AuthenticationWithRoles\AuthenticationWithRolesModule;
 use Rhubarb\Stem\Repositories\MySql\MySql;
 use Rhubarb\Stem\Repositories\Repository;
 use Rhubarb\Stem\Schema\SolutionSchema;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
+use Your\WebApp\Presenters\Img\ImgPresenter;
+use Your\WebApp\UrlHandlers\ImageUrlHandler;
 
 class YourAppModule extends Module
 {
@@ -44,6 +47,7 @@ class YourAppModule extends Module
                         'image/'  => new CrudUrlHandler( 'Image', 'Your\WebApp\Presenters\Image' ),
                         'logout/' => new ClassMappedUrlHandler( 'Your\WebApp\Presenters\Logout\LogoutPresenter' )
                     ] ),
+                    'img/' => new ImageUrlHandler( ImgPresenter::class ),
                     'users/' => new CrudUrlHandler( 'CustomUser', 'Your\WebApp\Presenters\MyProfile' )
                 ] ),
                 "/login/" => $login,
