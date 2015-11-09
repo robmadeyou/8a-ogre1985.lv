@@ -12,7 +12,7 @@
     font-style: normal;
 }
 
-p, span, b, h1, h2, h3, h4, h5, a
+p, span, b, h1, h2, h3, h4, h5, a, label, input, button
 {
     font-family: OpenSans;
     /*font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/
@@ -144,6 +144,12 @@ body {
     -ms-transition: background 0.2s;
     -o-transition: background 0.2s;
     transition: background 0.2s;
+}
+
+#login-panel-fg input, #login-panel-fg button
+{
+    color: black;
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 
 #login-panel-fg:hover

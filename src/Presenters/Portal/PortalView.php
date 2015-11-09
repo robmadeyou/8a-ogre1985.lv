@@ -16,7 +16,7 @@ class PortalView extends JQueryView
     {
         parent::printViewContent();
 
-        $discussions = Gallery::find( )->setRange( 0, 5 );
+        $discussions = Gallery::find( )->setRange( 0, 6 );
 
         $sql = MySql::executeStatement( 'SELECT Source FROM tblImage ORDER BY RAND() LIMIT 6' );
 
@@ -38,11 +38,11 @@ class PortalView extends JQueryView
                 </h1>
                 <a href="gallery/add/" class="btn btn-primary right-side-title">Pievienot jaunu galeriju</a>
             </div>
-            <div class="row" style="height: 150px;">
+            <div class="row" style="height: 150px; text-align: center">
                 <?php
                 foreach( $discussions as $discussion )
                 {
-                    print '<div class="col-xs-6 col-md-2 center-align">';
+                    print '<div class="col-xs-5 col-md-2 center-align">';
                         print new GalleryPresenter( $discussion );
                     print '</div>';
                 }

@@ -63,7 +63,7 @@ class IndexView extends JQueryView
                             <label for="password">Parole</label>
                             <?= $this->presenters[ 'password' ] ?>
                         </div>
-                        <button id="log-in">Ienākt</button>
+                        <button id="log-in" class="button btn">Ienākt</button>
                     </div>
                 </div>
             </div>
