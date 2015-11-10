@@ -78,7 +78,25 @@ bridge.prototype.attachEvents = function () {
     {
         $( '.comment-reply' ).click( function( data )
         {
-            $( this ).after( 'tests ' );
+            if( !$( this ).attr( 'disabled' ) )
+            {
+                var comid = $( this ).attr( 'comid' );
+                var addition = $( '<br><textarea id="comment-input' + comid + '"></textarea><button type="submit" id="comment-input-submit-' + comid + '">Pievienot</button>' );
+
+                $( this ).after( addition );
+                $( '#comment-input-submit-' + comid ).click( function( event )
+                {
+                    var a = $( '#comment-input' + comid );
+                    self.raiseServerEvent( 'PostComment', a.val(), selectedImageID, comid, function( data )
+                    {
+                        a.val( '' );
+                        getComments();
+                    });
+                    event.preventDefault();
+                    return false;
+                });
+                $( this ).attr( 'disabled', true );
+            }
 
             data.preventDefault();
             return false;

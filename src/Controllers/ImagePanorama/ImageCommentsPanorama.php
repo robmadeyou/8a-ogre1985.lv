@@ -26,13 +26,14 @@ class ImageCommentsPanorama extends ImagePanorama
     protected function configureView()
     {
 
-        $this->view->attachEventHandler( 'PostComment', function( $commentText, $imageID )
+        $this->view->attachEventHandler( 'PostComment', function( $commentText, $imageID, $commentID = 0 )
         {
             if( $commentText != "" )
             {
                 $comment = new Comment();
                 $comment->ImageID = $imageID;
                 $comment->Comment = $commentText;
+                $comment->InReplyTo = $commentID;
                 $comment->PostedBy = CustomLoginProvider::getLoggedInUser()->UserID;
                 $comment->save();
             }

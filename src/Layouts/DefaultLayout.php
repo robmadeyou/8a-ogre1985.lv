@@ -2,10 +2,6 @@
 
 namespace Your\WebApp\Layouts;
 
-use Rhubarb\Crown\Html\ResourceLoader;
-use Rhubarb\Crown\Settings\HtmlPageSettings;
-use Rhubarb\Patterns\Layouts\BaseLayout;
-
 class DefaultLayout extends CustomBaseLayout
 {
     protected function printPageHeading()

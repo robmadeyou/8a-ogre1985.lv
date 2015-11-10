@@ -31,7 +31,7 @@ class PortalLayout extends CustomBaseLayout
                     <ul class="nav navbar-nav">
                         <li><a href="/portal/"><span class="glyphicon glyphicon-home"></span> Mājas</a></li>
                         <li><a href="/portal/gallery/"><span class="glyphicon glyphicon-picture"></span> Galerijas</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-sunglasses"></span> Kontakti</a></li>
+                        <li><a href="/portal/users/"><span class="glyphicon glyphicon-sunglasses"></span> Kontakti</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -122,7 +122,7 @@ class PortalLayout extends CustomBaseLayout
         </div>
         <footer class="footer">
             <div class="container">
-                HELLO!
+                Ja kādas problēmas lūdzu sūtiet uz ē-pastu <a href="mailto:robmadeyou@hotmail.co.uk">robmadeyou@hotmail.co.uk</a
             </div>
         </footer>
         <?php
