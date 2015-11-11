@@ -34,42 +34,48 @@ class PortalView extends JQueryView
         <div class="__container noPadding">
             <?= new ImagePanorama( $images )?>
         </div>
-        <div class="discussion-group __container">
-            <div class="center-block clearfix relative">
-                <h1 style="text-align: center">
-                    Top 6 Galerijas
-                </h1>
-                <a href="gallery/add/" class="btn btn-primary right-side-title">Pievienot galeriju</a>
-            </div>
-            <div class="row" style="height: 150px; text-align: center">
-                <?php
-                foreach( $discussions as $discussion )
-                {
-                    print '<div class="col-xs-5 col-md-2 center-align">';
-                        print new GalleryPresenter( $discussion );
-                    print '</div>';
-                }
-                ?>
-            </div>
+        <div class="row">
+            <div class="discussion-group col-md-6">
+                <div class="__container">
+                    <div class="center-block clearfix relative">
+                        <h1 style="text-align: center">
+                            Top 6 Galerijas
+                        </h1>
+                        <a href="gallery/add/" class="btn btn-primary right-side-title">Pievienot galeriju</a>
+                    </div>
+                    <div class="row" style="height: 150px; text-align: center">
+                        <?php
+                        foreach( $discussions as $discussion )
+                        {
+                            print '<div class="col-md-4 center-align">';
+                            print new GalleryPresenter( $discussion );
+                            print '</div>';
+                        }
+                        ?>
+                    </div>
 
-            <div class="__clear-floats"></div>
-        </div>
-        <div class="__container">
-            <div class="center-block clearfix relative">
-                <h1 style="text-align: center">
-                    6 Jaunākie biedri portālā!
-                </h1>
-                <a href="/portal/users/" class="btn btn-primary right-side-title">Redzēt visus</a>
+                    <div class="__clear-floats"></div>
+                </div>
             </div>
-            <div class="row">
-                <?php
-                    foreach( $users as $user )
-                    {
-                        print '<div class="col-xs-5 col-md-2 center-align">';
+            <div class="col-md-6">
+                <div class="__container noPadding">
+                    <div class="center-block clearfix relative">
+                        <h1 style="text-align: center">
+                            6 Jaunākie biedri portālā!
+                        </h1>
+                        <a href="/portal/users/" class="btn btn-primary right-side-title">Redzēt visus</a>
+                    </div>
+                    <div class="row">
+                        <?php
+                        foreach( $users as $user )
+                        {
+                            print '<div class="col-md-4 center-align">';
                             print new ProfileSummaryPresenter( $user );
-                        print '</div>';
-                    }
-                ?>
+                            print '</div>';
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
 

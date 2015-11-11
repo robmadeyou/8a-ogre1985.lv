@@ -25,7 +25,7 @@ class ProfileSummaryView extends HtmlView
             $user = new CustomUser( $this->userID );
         }
         ?>
-        <div class="__container center-align" style="padding-top: 6px;">
+        <div class="center-align" style="padding-top: 6px;">
             <img class="img-circle" src="<?=$user->Image?>" alt="Nevarēju atrast bildi" width="140" height="140">
             <h1><?=$user->getFullName()?></h1>
         </div>
