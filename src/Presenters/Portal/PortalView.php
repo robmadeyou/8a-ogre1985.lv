@@ -59,7 +59,7 @@ class PortalView extends JQueryView
                 <h1 style="text-align: center">
                     6 Jaunākie biedri portālā!
                 </h1>
-                <a href="gallery/add/" class="btn btn-primary right-side-title">Redzēt visus</a>
+                <a href="/portal/users/" class="btn btn-primary right-side-title">Redzēt visus</a>
             </div>
             <div class="row">
                 <?php

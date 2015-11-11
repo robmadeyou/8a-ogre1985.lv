@@ -17,11 +17,7 @@ class ImgView extends View
             header( 'Content-Disposition: attachment; filename=image.jpg');
             $image = new Image( $_GET[ 'g' ] );
             echo file_get_contents( '.' . $image->Source );
-            ob_flush();
-            flush();
+            die();
         }
-        ?>
-
-        <?php
     }
 }

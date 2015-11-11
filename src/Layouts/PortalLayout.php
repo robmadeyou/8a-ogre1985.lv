@@ -11,6 +11,7 @@ class PortalLayout extends CustomBaseLayout
         parent::__construct();
         ResourceLoader::loadResource( "/static/css/dropzone.css" );
         ResourceLoader::loadResource( "/static/scripts/dropzone.js" );
+        ResourceLoader::loadJquery();
     }
 
     protected function printPageHeading()
