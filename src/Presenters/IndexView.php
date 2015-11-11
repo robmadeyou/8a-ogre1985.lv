@@ -25,6 +25,14 @@ class IndexView extends JQueryView
             new TextBox( 'username' ),
             new Password( 'password' )
         );
+
+        foreach( $this->presenters as $presenter )
+        {
+            if( $presenter instanceof TextBox )
+            {
+                $presenter->addCssClassName( 'form-control' );
+            }
+        }
     }
 
     /**
@@ -55,11 +63,11 @@ class IndexView extends JQueryView
                     <h1>Sveicināti!</h1>
                     <p>Ielogoties šeit</p>
                     <div id="inputs">
-                        <div class="__group">
+                        <div class="form-group __group">
                             <label for="name">Vārds</label>
                             <?= $this->presenters[ 'username' ] ?>
                         </div>
-                        <div class="__group">
+                        <div class="form-group __group">
                             <label for="password">Parole</label>
                             <?= $this->presenters[ 'password' ] ?>
                         </div>
