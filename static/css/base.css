@@ -59,6 +59,11 @@ body {
     text-align: center;
 }
 
+.footer
+{
+    height: 40px;
+}
+
 .gallery-overlay
 {
     text-align: center;
@@ -266,8 +271,8 @@ body {
 .__container
 {
     padding: 8px 8px 8px 8px;
-    background-color: white;
-    border: solid 1.5px grey;
+    background-color: #f8f8f8;
+    border: solid 6px #ffffff;
     box-shadow: #e4e4eb;
     margin: 8px 8px 8px 8px;
     clear: both;
