@@ -93,6 +93,7 @@ class GalleryAddPresenter extends ModelFormPresenter
         if ( false === $ext = array_search(
                 $finfo->file( $path ),
                 array(
+                    'jpeg' => 'image/jpeg',
                     'jpg' => 'image/jpeg',
                     'png' => 'image/png',
                     'gif' => 'image/gif',

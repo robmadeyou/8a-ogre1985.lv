@@ -2,6 +2,7 @@
 
 namespace Your\WebApp\Presenters\Users;
 
+use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Views\HtmlView;
 use Your\WebApp\Controllers\ProfileSummary\ProfileSummaryPresenter;
 use Your\WebApp\Model\CustomUser;
@@ -12,18 +13,16 @@ class UsersView extends HtmlView
     {
         $users = CustomUser::find()->addSort( 'UserID', false )->setRange( 0, 6 );
 
+
+        $html = new HtmlPageSettings();
+        $html->PageTitle = "Visi portāla lietotāji"
         ?>
             <div class="__container">
-                <div class="center-block clearfix relative">
-                    <h1 style="text-align: center">
-                        Visi portāla lietotāji
-                    </h1>
-                </div>
                 <div class="row">
                     <?php
                     foreach( $users as $user )
                     {
-                        print '<div class="col-xs-5 col-md-2 center-align">';
+                        print '<div class="col-xs-5 col-md-3 center-align">';
                         print new ProfileSummaryPresenter( $user );
                         print '</div>';
                     }

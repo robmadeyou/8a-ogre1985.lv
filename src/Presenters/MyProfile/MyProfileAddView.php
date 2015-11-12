@@ -54,6 +54,7 @@ class MyProfileAddView extends CrudView
             if( $presenter instanceof TextBox )
             {
                 $presenter->addCssClassName( 'form-control' );
+                $presenter->addHtmlAttribute( 'autocomplete', 'off' );
             }
         }
 
@@ -68,11 +69,12 @@ class MyProfileAddView extends CrudView
         ?>
             <div class='__container'>
                 <div class="col-sm-2"></div>
-                <div class="col-sm-10">
+                <div class="col-sm-8">
                     <?php
                         $this->printNiceInputs();
                     ?>
                 </div>
+                <div class="col-sm-2"></div>
                 <div class="__clear-floats"></div>
             </div>
         <?php

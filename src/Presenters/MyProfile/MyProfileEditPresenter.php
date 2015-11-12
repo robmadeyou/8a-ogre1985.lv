@@ -14,7 +14,7 @@ class MyProfileEditPresenter extends MyProfileAddPresenter
         $user = CustomLoginProvider::getLoggedInUser();
         $model = $this->getRestModel();
 
-        if( $user->UserID != $model->UserID && !$user->IsSuperuser )
+        if( !isset( $model ) || $user->UserID != $model->UserID && !$user->IsSuperuser )
         {
             throw new ForceResponseException( new RedirectResponse( '/portal/' . $user->UserID ) );
         }
