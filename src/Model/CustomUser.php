@@ -18,4 +18,9 @@ class CustomUser extends User
             new String( 'Image', 150 )
         );
     }
+
+    public function getImage()
+    {
+        return $this->modelData[ 'Image' ] == "" ? '/static/images/no-user.png' : $this->modelData[ 'Image' ];
+    }
 }

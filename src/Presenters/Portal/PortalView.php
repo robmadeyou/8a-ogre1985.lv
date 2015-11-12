@@ -36,7 +36,7 @@ class PortalView extends JQueryView
         </div>
         <div class="row">
             <div class="discussion-group col-md-6">
-                <div class="__container">
+                <div class="__container min-height-500">
                     <div class="center-block clearfix relative">
                         <h1 style="text-align: center">
                             Top 6 Galerijas
@@ -58,7 +58,7 @@ class PortalView extends JQueryView
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="__container noPadding">
+                <div class="__container noPadding min-height-500">
                     <div class="center-block clearfix relative">
                         <h1 style="text-align: center">
                             6 Jaunākie biedri portālā!

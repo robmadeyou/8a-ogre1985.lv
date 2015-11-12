@@ -269,9 +269,7 @@ body {
     background-color: white;
     border: solid 1.5px grey;
     box-shadow: #e4e4eb;
-    margin-bottom: 16px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin: 8px 8px 8px 8px;
     clear: both;
 }
 
@@ -288,6 +286,11 @@ body {
 .__container.comment
 {
     padding: 16px 16px 16px 16px;
+}
+
+.__container.min-height-500
+{
+    min-height: 500px;
 }
 
 .__container.odd

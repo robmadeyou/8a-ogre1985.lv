@@ -44,7 +44,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                         $commentNums = $commentNums == 1 ? $commentNums . " komentārs" : $commentNums . " komentāri";
                         print '<li class="thumbnail-image-container">
                                     <a href="#' . $counter . '">
-                                        <img id="img' . $counter . '" class="thumbnail-image ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->GetResizedImage( 1 ). '">
+                                        <img id="img' . $counter . '" class="thumbnail-image img-thumbnail ' . $class . '" thumb="' . $counter . '" imgID="' . $image->ImageID . '" src="' .$image->GetResizedImage( 1 ). '">
                                     </a>
                                     <span>' . $commentNums . ' </span>
                                </li>';
