@@ -4,9 +4,12 @@ namespace Your\WebApp\Presenters\MyProfile;
 
 use Rhubarb\Crown\Exceptions\ForceResponseException;
 use Rhubarb\Crown\Response\RedirectResponse;
+use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Application\Table\Table;
 use Rhubarb\Leaf\Presenters\Controls\Buttons\Button;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
+use Rhubarb\Stem\Exceptions\RecordNotFoundException;
+use Rhubarb\Stem\Filters\Equals;
 use Your\WebApp\Controllers\TableColumns\FixedWidthColumn;
 use Your\WebApp\Model\Comment;
 use Your\WebApp\Model\CustomUser;
@@ -18,12 +21,17 @@ class MyProfileCollectionView extends CrudView
         parent::createPresenters();
 
         $this->addPresenters(
-            $table = new Table( CustomUser::find(), 25, 'UserTable' ),
+            $table = new Table( CustomUser::find( new Equals( 'Enabled', true )), 25, 'UserTable' ),
             $delete = new Button( 'Dzēst', 'Dzēst', function( $a )
             {
-                $comment = new Comment();
-                $comment->Comment = $a;
-                $comment->save();
+                try
+                {
+                    $user = new CustomUser( $a );
+                    $user->Enabled = false;
+                    $user->save();
+                }
+                catch( RecordNotFoundException $ex )
+                {}
             }),
             $edit = new Button( 'Mainīt', 'Mainīt', function( $a )
             {
@@ -32,6 +40,7 @@ class MyProfileCollectionView extends CrudView
         );
 
         $delete->addCssClassName( 'btn-danger' );
+        $delete->setConfirmMessage( 'Vai jūs tiešam gribat dzēst šo lietotāju?' );
 
         $table->addTableCssClass( [ 'table table-striped table-bordered' ] );
 
@@ -47,12 +56,11 @@ class MyProfileCollectionView extends CrudView
 
     protected function printViewContent()
     {
+        $html = new HtmlPageSettings();
+        $html->PageTitle = 'Mainīt lietotājus';
         ?>
             <div class="__container">
                 <div class="center-block clearfix relative">
-                    <h1 style="text-align: center">
-                        Mainīt lietotājus
-                    </h1>
                     <a href="/users/add/" class="btn btn-primary right-side-title">Pievienot jaunu profilu</a>
                 </div>
                 <?= $this->presenters[ 'UserTable' ]; ?>
