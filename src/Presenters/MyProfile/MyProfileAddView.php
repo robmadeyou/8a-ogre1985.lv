@@ -4,6 +4,7 @@ namespace Your\WebApp\Presenters\MyProfile;
 
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Controls\FileUpload\SimpleImageUpload;
+use Rhubarb\Leaf\Presenters\Controls\Selection\DropDown\DropDown;
 use Rhubarb\Leaf\Presenters\Controls\Text\Password\Password;
 use Rhubarb\Leaf\Presenters\Controls\Text\TextBox\TextBox;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
@@ -46,17 +47,21 @@ class MyProfileAddView extends CrudView
             'Forename',
             'Surname',
             'Email',
+            'Gender',
+            'PhoneNumber',
             new Password( 'PasswordPlace' )
         );
 
         foreach( $this->presenters as $presenter )
         {
-            if( $presenter instanceof TextBox )
+            if( $presenter instanceof TextBox || $presenter instanceof DropDown )
             {
                 $presenter->addCssClassName( 'form-control' );
                 $presenter->addHtmlAttribute( 'autocomplete', 'off' );
             }
         }
+
+        $this->presenters[ 'Save' ]->addCssClassName( 'btn-primary' );
 
         $this->presenters[ 'Save' ]->setButtonText( 'Saglabāt' );
         $this->presenters[ 'Cancel' ]->setButtonText( 'Atcelt' );
@@ -69,7 +74,13 @@ class MyProfileAddView extends CrudView
         ?>
             <div class='__container'>
                 <div class="col-sm-2"></div>
-                <div class="col-sm-8">
+                <div class="col-sm-3">
+                    <?php
+                        $currentImage = self::$model->Image ? '<img style="max-width:300px" src="' . self::$model->Image . '">' : '';
+                        print $currentImage . $this->presenters[ 'Image' ];
+                    ?>
+                </div>
+                <div class="col-sm-5">
                     <?php
                         $this->printNiceInputs();
                     ?>
@@ -82,15 +93,15 @@ class MyProfileAddView extends CrudView
 
     protected function printNiceInputs()
     {
-        $currentImage = self::$model->Image ? '<img style="max-width:300px" src="' . self::$model->Image . '">' : '';
         $this->printFieldset( "",
             [
-                'Profila bilde' => $currentImage . $this->presenters[ 'Image' ],
                 'Lietotāja vārds' => 'Username',
                 'Parole' => 'PasswordPlace',
                 'Vārds' => 'Forename',
                 'Uzvārds' => 'Surname',
                 'E - pasts' => 'Email',
+                'Telefona numurs' => 'PhoneNumber',
+                'Dzimums' => 'Gender',
                 $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
             ]);
     }

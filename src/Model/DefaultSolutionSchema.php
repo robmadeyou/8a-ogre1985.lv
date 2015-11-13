@@ -6,7 +6,7 @@ use Rhubarb\Stem\Schema\SolutionSchema;
 
 class DefaultSolutionSchema extends SolutionSchema
 {
-    public function __construct( $version = 1.35 )
+    public function __construct( $version = 1.36 )
     {
         parent::__construct( $version );
 

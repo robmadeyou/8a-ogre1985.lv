@@ -16,14 +16,14 @@ class MyProfileEditView extends MyProfileAddView
 
     protected function printNiceInputs()
     {
-        $currentImage = self::$model->Image ? '<img style="max-width:300px" src="' . self::$model->Image . '">' : '';
         $this->printFieldset( "",
             [
-                'Bilde' => $currentImage . $this->presenters[ 'Image' ],
                 'Vārds' => 'Forename',
                 'Uzvārds' => 'Surname',
                 'Parole' => 'PasswordPlace',
                 'E - pasts' => 'Email',
+                'Telefona numurs' => 'PhoneNumber',
+                'Dzimums' => 'Gender',
                 $this->presenters[ 'Save' ] . $this->presenters[ 'Cancel' ]
             ]);
     }

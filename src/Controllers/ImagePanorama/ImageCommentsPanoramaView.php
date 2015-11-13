@@ -3,6 +3,7 @@
 namespace Your\WebApp\Controllers\ImagePanorama;
 
 use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
+use Rhubarb\Stem\Aggregates\Count;
 use Rhubarb\Stem\Exceptions\RecordNotFoundException;
 use Rhubarb\Stem\Filters\Equals;
 use Rhubarb\Stem\Repositories\MySql\MySql;
@@ -68,10 +69,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                 </div>
             </div>
             <div class="comments-section col-md-8">
-                <div class="__title-container">
-                    <h1 class="comments-title">Komentāri</h1>
-                </div>
-                <div class="comments-bound __container noSpace">
+                <div class="comments-bound __container" style="min-height: 46px;">
                     <?php
                         self::getCommentsForImageID( $this->images[0]->ImageID );
                     ?>
@@ -105,15 +103,21 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
         return __DIR__;
     }
 
-    public static function getCommentsForImageID( $ImageID, $print = true )
+    public static function getCommentsForImageID( $ImageID, $print = true, $nested = false )
     {
         $comments = Comment::find( new Equals( 'ImageID', $ImageID ) );
+
+        if( !$nested && $comments->calculateAggregates( new Count( 'CommentID' ) )[ 0 ] == 0 )
+        {
+            return '<h3 class="center-align">Tukšs</h3>';
+        }
+
         $builder = "";
         foreach( $comments as $comment )
         {
-            if( $comment->InReplyTo == null )
+            if( $comment->InReplyTo == 0 )
             {
-                $builder .= self::getCommentsForCommentID( $comment, $print );
+                $builder .= self::getCommentsForCommentID( $comment, $print, true );
             }
         }
 

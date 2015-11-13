@@ -3,6 +3,7 @@
 namespace Your\WebApp\Model;
 
 use Rhubarb\Scaffolds\Authentication\User;
+use Rhubarb\Stem\Repositories\MySql\Schema\Columns\MySqlEnum;
 use Rhubarb\Stem\Schema\Columns\Boolean;
 use Rhubarb\Stem\Schema\Columns\String;
 use Rhubarb\Stem\Schema\ModelSchema;
@@ -15,7 +16,9 @@ class CustomUser extends User
 
         $schema->addColumn(
             new Boolean( 'IsSuperuser' ),
-            new String( 'Image', 150 )
+            new String( 'Image', 150 ),
+            new MySqlEnum( 'Gender', 'Female', [ 'Male', 'Female'  ] ),
+            new String( 'PhoneNumber', 20 )
         );
     }
 
