@@ -3,6 +3,7 @@
 namespace Your\WebApp\Model;
 
 use Rhubarb\Crown\DateTime\RhubarbDateTime;
+use Rhubarb\Stem\Exceptions\RecordNotFoundException;
 use Rhubarb\Stem\Filters\Equals;
 use Rhubarb\Stem\Models\Model;
 use Rhubarb\Stem\Repositories\MySql\MySql;
@@ -56,6 +57,13 @@ class Gallery extends Model
         {
             $id = MySql::returnSingleValue( "SELECT ImageID FROM tblImage WHERE GalleryID = :GalleryID", [ "GalleryID" => $this->GalleryID ]);
         }
-        return (new Image( $id ))->GetResizedImage( 1 );
+        try
+        {
+            return (new Image( $id ))->GetResizedImage( 1 );
+        }
+        catch( RecordNotFoundException $ex )
+        {
+            return '/static/images/no-thumb.png';
+        }
     }
 }

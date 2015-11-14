@@ -13,6 +13,11 @@ bridge.prototype.attachEvents = function () {
     var selectedImageID = $( $( '.thumbnail-image' )[0] ).attr( 'imgID' );
     var comments = $( '.comments-bound');
 
+    $( '#save-mode-button' ).click( function()
+    {
+        window.location.href = window.location.href;
+    });
+
     hookIntoReplyEvents();
     $( '.image-panorama').hover( function()
     {

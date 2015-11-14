@@ -21,19 +21,7 @@ class GalleryAddView extends CrudView
     {
         parent::createPresenters();
 
-        $upload = new DragAndDropFileUploadPresenter( 'Image' );
-        $upload->filters[] = '.jpg';
-        $upload->filters[] = '.jpeg';
-        $upload->filters[] = '.png';
-        $upload->filters[] = '.gif';
-
-        $upload->attachEventHandler( 'FileUploaded', function( $file, $location )
-        {
-            self::uploadImage( $file, $location );
-        });
-
         $this->addPresenters(
-            $upload,
             "Title"
         );
 
@@ -50,7 +38,7 @@ class GalleryAddView extends CrudView
         <div class="__container">
             <div id="dropzone">
                 <div action="/portal/gallery/add/" class="dropzone" id="demo-upload">
-                    <div class="dz-message">Bildes paradisies seit<br />
+                    <div class="dz-message">Bildes paradisies šeit<br />
                     </div>
                 </div>
             </div>

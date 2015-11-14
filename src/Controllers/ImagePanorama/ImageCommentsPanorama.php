@@ -5,17 +5,25 @@ namespace Your\WebApp\Controllers\ImagePanorama;
 use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Comment;
 use Your\WebApp\Model\Image;
+use Your\WebApp\Presenters\Gallery\GalleryAddPresenter;
 
 class ImageCommentsPanorama extends ImagePanorama
 {
 
     /**
-     * @param $imageUrls Image[]
+     * @param $images Image[]
      * @param string $name
      */
     public function __construct($images, $name = "")
     {
         parent::__construct($images, $name);
+
+        if( isset( $_GET[ 'a' ] ) )
+        {
+            GalleryAddPresenter::$imgpath = 'usrdata/' . $_COOKIE[ 'PHPSESSID' ] . '/';
+            GalleryAddPresenter::parseFiles();
+            GalleryAddPresenter::moveAndCreateImages( $_GET[ 'a' ] );
+        }
     }
 
     protected function createView()

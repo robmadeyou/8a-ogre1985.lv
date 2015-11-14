@@ -19,6 +19,11 @@ class GalleryAddPresenter extends ModelFormPresenter
 
         parent::__construct( $name );
 
+        self::parseFiles();
+    }
+
+    public static function parseFiles()
+    {
         if( !empty( $_FILES ) )
         {
             if( !is_dir( self::$imgpath ))
@@ -47,6 +52,13 @@ class GalleryAddPresenter extends ModelFormPresenter
 
         $model = parent::saveRestModel();
 
+        self::moveAndCreateImages( $model->GalleryID );
+
+        return $model;
+    }
+
+    public static function moveAndCreateImages( $galleryID )
+    {
         if( !self::isDirectoryEmpty( self::$imgpath ) )
         {
             foreach( scandir( self::$imgpath ) as $img )
@@ -61,11 +73,9 @@ class GalleryAddPresenter extends ModelFormPresenter
         foreach( GalleryAddView::$createdImagesForGallery as $id )
         {
             $image = new Image( $id );
-            $image->GalleryID = $model->GalleryID;
+            $image->GalleryID = $galleryID;
             $image->save();
         }
-
-        return $model;
     }
 
     protected function redirectAfterCancel()

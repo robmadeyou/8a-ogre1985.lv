@@ -22,7 +22,7 @@ class UsersView extends HtmlView
                     <?php
                     foreach( $users as $user )
                     {
-                        print '<div class="col-xs-5 col-md-3 center-align">';
+                        print '<div class="col-xs-4 col-md-2 center-align">';
                         print new ProfileSummaryPresenter( $user );
                         print '</div>';
                     }
