@@ -12,6 +12,7 @@ class CustomBaseLayout extends BaseLayout
     {
         ResourceLoader::loadResource( "/static/css/bootstrap.css" );
         ResourceLoader::loadResource( "/static/css/base.css" );
+        ResourceLoader::loadResource( "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" );
     }
 
     protected function printHead()

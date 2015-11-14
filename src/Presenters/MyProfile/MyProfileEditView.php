@@ -21,6 +21,7 @@ class MyProfileEditView extends MyProfileAddView
                 'Vārds' => 'Forename',
                 'Uzvārds' => 'Surname',
                 'Parole' => 'PasswordPlace',
+                'Rādit citiem informāciju?' => 'ShowDetails',
                 'E - pasts' => 'Email',
                 'Telefona numurs' => 'PhoneNumber',
                 'Dzimums' => 'Gender',

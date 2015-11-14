@@ -70,10 +70,10 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                 <div class="__container">
                     <div class="row">
                         <div class="col-xs-6 center-align">
-                            <a href="/img/?g=<?= $this->images[0]->ImageID ?>" id="downloadButton" ><span class="glyphicon glyphicon-save"></span> Lejuplādēd </a>
+                            <a href="/img/?g=<?= $this->images[0]->ImageID ?>" id="downloadButton" ><i class="fa fa-download"></i> Lejuplādēd </a>
                         </div>
                         <div class="col-xs-6 center-align">
-                            <a href="#" class="" data-toggle="modal" data-target="#myModal">Pievienot bilde(s)</a>
+                            <a href="#" class="" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload"></i> Pievienot bilde(s)</a>
                         </div>
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">

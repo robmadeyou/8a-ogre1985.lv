@@ -18,7 +18,8 @@ class CustomUser extends User
             new Boolean( 'IsSuperuser' ),
             new String( 'Image', 150 ),
             new MySqlEnum( 'Gender', 'Female', [ 'Male', 'Female'  ] ),
-            new String( 'PhoneNumber', 20 )
+            new String( 'PhoneNumber', 20 ),
+            new Boolean( 'ShowDetails' )
         );
     }
 

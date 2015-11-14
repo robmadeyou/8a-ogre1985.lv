@@ -28,6 +28,15 @@ class ProfileSummaryView extends HtmlView
         <div class="center-align" style="padding-top: 6px;">
             <img class="img-circle" src="<?=$user->Image?>" alt="Nevarēju atrast bildi" width="140" height="140">
             <h4><?=$user->getFullName()?></h4>
+            <?php
+                if( $user->ShowDetails )
+                {
+                    ?>
+                    <p><a href="mailto:<?= $user->Email ?>"><?= $user->Email ?></a></p>
+                    <p><?= $user->PhoneNumber ?></p>
+                    <?php
+                }
+            ?>
         </div>
         <?php
     }

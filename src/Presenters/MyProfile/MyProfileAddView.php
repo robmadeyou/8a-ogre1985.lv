@@ -49,6 +49,7 @@ class MyProfileAddView extends CrudView
             'Email',
             'Gender',
             'PhoneNumber',
+            'ShowDetails',
             new Password( 'PasswordPlace' )
         );
 
@@ -99,6 +100,7 @@ class MyProfileAddView extends CrudView
                 'Parole' => 'PasswordPlace',
                 'Vārds' => 'Forename',
                 'Uzvārds' => 'Surname',
+                'Rādit citiem informāciju?' => 'ShowDetails',
                 'E - pasts' => 'Email',
                 'Telefona numurs' => 'PhoneNumber',
                 'Dzimums' => 'Gender',
