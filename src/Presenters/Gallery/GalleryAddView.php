@@ -25,6 +25,7 @@ class GalleryAddView extends CrudView
             "Title"
         );
 
+        $this->presenters[ 'Save' ]->addCssClassNames( [ 'btn', 'btn-primary' ] );
         $this->presenters[ 'Save' ]->setButtonText( 'Saglābat' );
         $this->presenters[ 'Cancel' ]->setButtonText( 'Atcelt' );
     }
@@ -49,16 +50,17 @@ class GalleryAddView extends CrudView
                         <?= $this->presenters[ 'Title' ] ?>
                     </div>
                 </div>
+                <br>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <a href="#" class="btn btn-primary" id="addPicturesLink">Pievienot bilde(s)</a>
+                        <a href="#" class="btn btn-default" id="addPicturesLink">Pievienot bilde(s)</a>
                     </div>
                 </div>
             </form>
+            <?= $this->presenters[ 'Save' ]; ?>
+            <div class="__clear-floats"></div>
         </div>
         <?php
-
-        print $this->presenters[ 'Save' ];
     }
 
     /**
