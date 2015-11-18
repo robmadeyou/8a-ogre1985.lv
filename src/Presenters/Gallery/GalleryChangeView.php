@@ -15,8 +15,9 @@ class GalleryChangeView extends HtmlView
     {
         parent::createPresenters();
 
+        $table = new Table( Gallery::find()->addSort( 'Order' ), 50, 'Table' );
         $this->addPresenters(
-            $table = new Table( Gallery::find()->addSort( 'Order' ), 50, 'Table' ),
+            $table,
             $up = new Button( 'Up', 'Up', function( $id )
             {
                 $gallery = new Gallery( $id );
@@ -45,6 +46,7 @@ class GalleryChangeView extends HtmlView
         );
 
         $table->addTableCssClass( [ 'table' ] );
+        $table->NoDataHtml = '<h3 class="center-align">Oops! Nav galerijas</h3>';
         $delete->addCssClassName( 'btn-danger' );
         $delete->setConfirmMessage( 'Vai jūs tiešam gribat dzēst šo galeriju?' );
 
