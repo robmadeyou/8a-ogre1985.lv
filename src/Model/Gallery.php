@@ -30,7 +30,8 @@ class Gallery extends Model
             new String( 'Title', 125 ),
             new Integer( 'DefaultImageID' ),
             new DateTime( 'CreatedAt' ),
-            new Boolean( 'Published' )
+            new Boolean( 'Published' ),
+            new Integer( 'Order' )
         );
 
         return $schema;
@@ -64,6 +65,19 @@ class Gallery extends Model
         catch( RecordNotFoundException $ex )
         {
             return '/static/images/no-thumb.png';
+        }
+    }
+
+    public static function checkRecords( $oldVersion, $newVersion )
+    {
+        if( $newVersion == 2 )
+        {
+            $i = 0;
+            foreach( Gallery::find() as $gallery )
+            {
+                $gallery->Order = $i++;
+                $gallery->save();
+            }
         }
     }
 }
