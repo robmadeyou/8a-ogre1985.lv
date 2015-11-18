@@ -523,9 +523,17 @@ form
     border-left: 1px solid rgba(232, 201, 176, 0.45);
 }
 
+.comment-outer .delete
+{
+    position: absolute;
+    right: 0;
+    top: 35%;
+}
+
 .comment-outer-text
 {
     float: left;
+    position: relative;
     width: 85%;
     z-index: 50;
 }

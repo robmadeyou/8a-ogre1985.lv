@@ -217,6 +217,9 @@ HTML;
                                 <div class="comment-outer-title">
                                     <span class="comment-inner-name">{$fullname}</span><span class="comment-inner-date">{$comment->PostedAt}</span>
                                 </div>
+                                <div class="delete">
+                                    X
+                                </div>
                                 <div class="comment-inner-text">{$com}</div>
                                 <a href="#" comId="{$comment->UniqueIdentifier}" class="comment-reply">Atbildēt</a>
                             </div>
