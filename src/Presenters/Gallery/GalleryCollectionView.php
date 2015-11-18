@@ -5,6 +5,7 @@ namespace Your\WebApp\Presenters\Gallery;
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Patterns\Mvp\Crud\CrudView;
 use Your\WebApp\Controllers\GalleryController\GalleryPresenter;
+use Your\WebApp\Model\CustomUser;
 use Your\WebApp\Model\Gallery;
 
 class GalleryCollectionView extends CrudView
@@ -13,6 +14,10 @@ class GalleryCollectionView extends CrudView
     {
         $html = new HtmlPageSettings();
         $html->PageTitle = "Galerijas";
+        if( CustomUser::getLoggedInUser()->IsSuperuser )
+        {
+            $html->PageRightTitle = '<a href="/portal/gallery/change/" class="btn btn-default">Mainīt</a>';
+        }
         ?>
         <div class="__container">
             <div class="row" style="height: 150px;">
