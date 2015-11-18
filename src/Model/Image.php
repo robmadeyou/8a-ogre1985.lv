@@ -2,6 +2,9 @@
 
 namespace Your\WebApp\Model;
 
+use Rhubarb\Stem\Filters\Equals;
+use Rhubarb\Stem\Filters\GreaterThan;
+use Rhubarb\Stem\Filters\LessThan;
 use Rhubarb\Stem\Models\Model;
 use Rhubarb\Stem\Schema\Columns\AutoIncrement;
 use Rhubarb\Stem\Schema\Columns\DateTime;
@@ -28,7 +31,8 @@ class Image extends Model
             new String( 'Thumbnail', 200 ),
             new Integer( 'UploadedBy' ),
             new DateTime( 'UploadedAt' ),
-            new DateTime( 'LastUpdatedAt' )
+            new DateTime( 'LastUpdatedAt' ),
+            new Integer( 'Order', 0 )
             );
 
         return $schema;
@@ -49,6 +53,38 @@ class Image extends Model
         }
     }
 
+    public function moveOrder( $to )
+    {
+        if( $this->Order > $to )
+        {
+            foreach( Image::find( new GreaterThan( 'Order', $this->Order  ) ) as $image )
+            {
+                $image->Order--;
+                $image->save();
+            }
+        }
+        else if( $this->Order == $to )
+        {
+            return;
+        }
+        else
+        {
+            foreach( Image::find( new LessThan( 'Order', $this->Order ) ) as $image )
+            {
+                $image->Order++;
+                $image->save();
+            }
+        }
+
+        $this->Order = $to;
+        $this->save();
+    }
+
+    public function getThumbnail()
+    {
+        return $this->GetResizedImage( 1 );
+    }
+
     protected function beforeSave()
     {
         $this->LastUpdatedBy = new \DateTime();
@@ -58,5 +94,23 @@ class Image extends Model
             $this->UploadedAt = new \DateTime();
         }
         parent::beforeSave();
+    }
+
+    public static function checkRecords( $oldVersion, $newVersion )
+    {
+        parent::checkRecords( $oldVersion, $newVersion );
+
+        if( $newVersion == 2 )
+        {
+            foreach( Gallery::find() as $gallery )
+            {
+                $i = 0;
+                foreach( Image::find( new Equals( 'GalleryID', $gallery->GalleryID ) ) as $image )
+                {
+                    $image->Order = $i++;
+                    $image->save();
+                }
+            }
+        }
     }
 }

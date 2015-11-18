@@ -4,7 +4,9 @@ namespace Your\WebApp\Presenters\Gallery;
 
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Application\Table\Table;
+use Rhubarb\Leaf\Presenters\Controls\Buttons\Button;
 use Rhubarb\Stem\Filters\Equals;
+use Your\WebApp\Controllers\TableColumns\FixedWidthColumn;
 use Your\WebApp\Model\Image;
 
 class GalleryEditView extends GalleryAddView
@@ -13,29 +15,54 @@ class GalleryEditView extends GalleryAddView
     {
         parent::createPresenters();
 
-        $images = Image::find( new Equals( 'GalleryID', $this->getData( 'GaleryID' ) ) );
+        $images = Image::find( new Equals( 'GalleryID', $this->getData( 'GalleryID' ) ) )->addSort( 'Order' );
         $this->addPresenters(
-            $table = new Table( $images, 25, 'Images' )
+            $table = new Table( $images, 25, 'Images' ),
+            $delete = new Button( 'Dzēst', 'Dzēst', function( $id )
+            {
+                $image = new Image( $id );
+                $image->delete();
+            } ),
+            $down = new Button( 'down', 'Uz leju', function( $id )
+            {
+                $image = new Image( $id );
+                $image->Order++;
+                $image->save();
+            } ),
+            $up = new Button( 'up', 'Uz augšu', function( $id )
+            {
+                $image = new Image( $id );
+                $image->Order--;
+                $image->save();
+            })
         );
 
-        $table->Columns = [
+        $delete->setConfirmMessage( 'Vai jūs tiešam gribat dzēst šo lietotāju?' );
 
+        $table->addTableCssClass( [ 'table' ] );
+
+        $table->Columns = [
+            'Bilde' => '<img src="{Thumbnail}">',
+            'Indekss' => 'Order',
+            '&nbsp' => new FixedWidthColumn( $delete ),
+            '&nbsp&nbsp' => new FixedWidthColumn( $up ),
+            '&nbsp&nbsp&nbsp' => new FixedWidthColumn( $down )
         ];
+
+
     }
 
     protected function printViewContent()
     {
-        $galleryID = $this->getData( 'GalleryID' );
-        print "Bildes jau galerijā<br>";
-        foreach (  ) as $image )
-        {
-            print '<img style="width:50px; height:50px;" src="' . $image->Source . '">';
-        }
-
-
         parent::printViewContent();
 
         $html = new HtmlPageSettings();
         $html->PageTitle = 'Pievienot vel bildes galerijā';
+        ?>
+            <div class="__container">
+                Bildes jau galerijā<br>
+                <?= $this->presenters[ 'Images' ] ?>
+            </div>
+        <?php
     }
 }

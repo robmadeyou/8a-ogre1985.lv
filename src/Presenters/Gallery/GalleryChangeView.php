@@ -63,7 +63,7 @@ class GalleryChangeView extends HtmlView
     protected function printViewContent()
     {
         $html = new HtmlPageSettings();
-        $html->PageTitle = 'Mainīt galeriju pozīciju';
+        $html->PageTitle = 'Mainīt galerijas';
         ?>
         <div class="__container">
             <?= $this->presenters[ 'Table' ] ?>

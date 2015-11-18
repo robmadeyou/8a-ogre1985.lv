@@ -18,6 +18,7 @@ class GalleryCollectionView extends CrudView
         {
             $html->PageRightTitle = '<a href="/portal/gallery/change/" class="btn btn-default">Mainīt</a>';
         }
+        $html->PageRightTitle .= '&nbsp;<a href="gallery/add/" class="btn btn-primary">Pievienot galeriju</a>';
         ?>
         <div class="__container">
             <div class="row" style="height: 150px;">

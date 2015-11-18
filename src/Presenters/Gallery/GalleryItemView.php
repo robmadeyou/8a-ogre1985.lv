@@ -15,7 +15,7 @@ class GalleryItemView extends CrudView
         parent::createPresenters();
 
         $model = $this->raiseEvent( 'GetRestModel' );
-        $slideView = new ImageCommentsPanorama( Image::find( new Equals( 'GalleryID', $model->GalleryID ) ), 'SlideView' );
+        $slideView = new ImageCommentsPanorama( Image::find( new Equals( 'GalleryID', $model->GalleryID ) )->addSort( 'Order' ), 'SlideView' );
 
         $this->addPresenters( $slideView );
     }
