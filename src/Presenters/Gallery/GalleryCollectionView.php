@@ -18,7 +18,7 @@ class GalleryCollectionView extends CrudView
             <div class="row" style="height: 150px;">
                 <?php
 
-                $discussions = Gallery::find( );
+                $discussions = Gallery::find( )->addSort( 'Order' );
                 foreach( $discussions as $discussion )
                 {
                     print '<div class="col-xs-6 col-md-2 center-align">';

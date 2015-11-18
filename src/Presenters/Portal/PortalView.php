@@ -18,7 +18,7 @@ class PortalView extends JQueryView
     {
         parent::printViewContent();
 
-        $discussions = Gallery::find( )->setRange( 0, 6 );
+        $discussions = Gallery::find( )->addSort( 'Order' )->setRange( 0, 6 );
         $users = CustomUser::find()->addSort( 'UserID', false )->setRange( 0, 6 );
 
         $sql = MySql::executeStatement( 'SELECT Source FROM tblImage ORDER BY RAND() LIMIT 6' );
