@@ -26,7 +26,7 @@ class GalleryChangeView extends HtmlView
                 }
                 $gallery->Order--;
                 $gallery->save();
-            }, true ),
+            } ),
             $down = new Button( 'down', 'down', function( $id )
             {
                 $gallery = new Gallery( $id );
@@ -36,17 +36,26 @@ class GalleryChangeView extends HtmlView
                 }
                 $gallery->Order++;
                 $gallery->save();
-            }, true )
+            } ),
+            $delete = new Button( 'delete', 'delete', function( $id )
+            {
+                $g = new Gallery( $id );
+                $g->delete();
+            })
         );
 
         $table->addTableCssClass( [ 'table' ] );
+        $delete->addCssClassName( 'btn-danger' );
+        $delete->setConfirmMessage( 'Vai jūs tiešam gribat dzēst šo galeriju?' );
 
         $table->Columns = [
             'Nosaukums' => 'Title',
             'Indekss' => 'Order',
             '' => new FixedWidthColumn( $up ),
-            ' ' => new FixedWidthColumn( $down )
+            ' ' => new FixedWidthColumn( $down ),
+            '  ' => new FixedWidthColumn( $delete )
         ];
+
     }
 
     protected function printViewContent()

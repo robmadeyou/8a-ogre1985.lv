@@ -80,4 +80,14 @@ class Gallery extends Model
             }
         }
     }
+
+    protected function beforeDelete()
+    {
+        parent::beforeDelete();
+
+        foreach( Image::find( new Equals( 'GalleryID', $this->UniqueIdentifier ) ) as $image )
+        {
+            $image->delete();
+        }
+    }
 }
