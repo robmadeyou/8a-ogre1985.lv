@@ -10,6 +10,21 @@ bridge.prototype.attachEvents = function () {
 	{
 		$( '.dropzone' ).click();
 	});
+
+	var group = $( '#image-orders' ).sortable( {
+			group:'serialization',
+			delay:0,
+			onDrop: function( $item, container, _super )
+			{
+				var data = group.sortable("serialize").get();
+
+				var jsonString = JSON.stringify(data, null, ' ');
+
+				console.log( jsonString );
+				_super($item, container);
+			}
+		} )
+
 };
 
 window.rhubarb.viewBridgeClasses.GalleryAddViewBridge = bridge;

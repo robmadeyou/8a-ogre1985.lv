@@ -617,3 +617,23 @@ form
 {
     z-index: 49;
 }
+
+#image-orders {
+    padding:0;
+    margin:0;
+    height: 150px;
+}
+#image-orders div {
+    float: left;
+    width: 150px;
+    height: 150px;
+    list-style-type:none;
+    vertical-align: middle;
+    display: inline;
+    padding: 8px 8px 8px 8px;
+}
+
+#image-orders div img {
+    height: 100%;
+    max-width: 150px;
+}

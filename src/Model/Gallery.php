@@ -56,7 +56,7 @@ class Gallery extends Model
         }
         else
         {
-            $id = MySql::returnSingleValue( "SELECT ImageID FROM tblImage WHERE GalleryID = :GalleryID", [ "GalleryID" => $this->GalleryID ]);
+            $id = MySql::returnSingleValue( "SELECT ImageID FROM tblImage WHERE GalleryID = :GalleryID ORDER BY \"Order\"", [ "GalleryID" => $this->GalleryID ]);
         }
         try
         {

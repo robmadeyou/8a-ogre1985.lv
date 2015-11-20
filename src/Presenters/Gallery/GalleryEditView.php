@@ -5,6 +5,7 @@ namespace Your\WebApp\Presenters\Gallery;
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Presenters\Application\Table\Table;
 use Rhubarb\Leaf\Presenters\Controls\Buttons\Button;
+use Rhubarb\Leaf\Views\WithJqueryViewBridgeTrait;
 use Rhubarb\Stem\Filters\Equals;
 use Your\WebApp\Controllers\TableColumns\FixedWidthColumn;
 use Your\WebApp\Model\Image;
@@ -42,7 +43,7 @@ class GalleryEditView extends GalleryAddView
         $table->addTableCssClass( [ 'table' ] );
 
         $table->Columns = [
-            'Bilde' => '<img src="{Thumbnail}">',
+            'Bilde' => '<img style="max-width: 250px;" src="{Thumbnail}">',
             'Indekss' => 'Order',
             '&nbsp' => new FixedWidthColumn( $delete ),
             '&nbsp&nbsp' => new FixedWidthColumn( $up ),
@@ -61,7 +62,16 @@ class GalleryEditView extends GalleryAddView
         ?>
             <div class="__container">
                 Bildes jau galerijā<br>
-                <?= $this->presenters[ 'Images' ] ?>
+                <div id="image-orders">
+                    <?php
+                        $images = Image::find( new Equals( 'GalleryID', $this->getData( 'GalleryID' ) ) )->addSort( 'Order' );
+                        foreach( $images as $image )
+                        {
+                            print '<div><img src="' . $image->Source . ' "></div>';
+                        }
+                    ?>
+                </div>
+                <div class="__clear-floats"></div>
             </div>
         <?php
     }

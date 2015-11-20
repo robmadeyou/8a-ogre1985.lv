@@ -2,6 +2,7 @@
 
 namespace Your\WebApp\Presenters\Gallery;
 
+use Rhubarb\Crown\Html\ResourceLoader;
 use Rhubarb\Crown\Layout\LayoutModule;
 use Your\WebApp\Layouts\PortalLayout;
 

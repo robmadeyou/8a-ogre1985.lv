@@ -39,7 +39,7 @@ class GalleryAddView extends CrudView
         <div class="__container">
             <div id="dropzone">
                 <div action="/portal/gallery/add/" class="dropzone" id="demo-upload">
-                    <div class="dz-message">Bildes paradisies šeit<br />
+                    <div class="dz-message">Bildes parādīsies šeit<br />
                     </div>
                 </div>
             </div>
