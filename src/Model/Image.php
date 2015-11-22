@@ -6,6 +6,7 @@ use Rhubarb\Stem\Filters\Equals;
 use Rhubarb\Stem\Filters\GreaterThan;
 use Rhubarb\Stem\Filters\LessThan;
 use Rhubarb\Stem\Models\Model;
+use Rhubarb\Stem\Repositories\MySql\MySql;
 use Rhubarb\Stem\Schema\Columns\AutoIncrement;
 use Rhubarb\Stem\Schema\Columns\DateTime;
 use Rhubarb\Stem\Schema\Columns\Integer;
@@ -94,6 +95,17 @@ class Image extends Model
             $this->UploadedAt = new \DateTime();
         }
         parent::beforeSave();
+    }
+
+    protected function afterSave()
+    {
+        parent::afterSave();
+
+        if( $this->Order == null && $this->GalleryID != 0 )
+        {
+            $this->Order =  intval( MySql::returnSingleValue( "SELECT tblImage.Order FROM tblImage WHERE GalleryID = " . intval( $this->GalleryID ) . " ORDER BY tblImage.Order DESC LIMIT 1" ) ) + 1;
+            $this->save();
+        }
     }
 
     public static function checkRecords( $oldVersion, $newVersion )

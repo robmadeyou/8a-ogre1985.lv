@@ -47,6 +47,15 @@ class GalleryAddPresenter extends ModelFormPresenter
         return new GalleryAddView();
     }
 
+    protected function configureView()
+    {
+        $this->view->attachEventHandler( 'ChangeImageID', function( $imageID, $index ){
+            $image = new Image( $imageID );
+            $image->moveOrder( $index );
+        } );
+        return parent::configureView();
+    }
+
     protected function saveRestModel()
     {
 

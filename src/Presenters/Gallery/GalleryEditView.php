@@ -62,12 +62,12 @@ class GalleryEditView extends GalleryAddView
         ?>
             <div class="__container">
                 Bildes jau galerijā<br>
-                <div id="image-orders">
+                <div id="image-orders" class="serialization">
                     <?php
                         $images = Image::find( new Equals( 'GalleryID', $this->getData( 'GalleryID' ) ) )->addSort( 'Order' );
                         foreach( $images as $image )
                         {
-                            print '<div><img src="' . $image->Source . ' "></div>';
+                            print '<div><img iiid="' . $image->ImageID . '" src="' . $image->Source . ' "></div>';
                         }
                     ?>
                 </div>
