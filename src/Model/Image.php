@@ -2,6 +2,7 @@
 
 namespace Your\WebApp\Model;
 
+use Rhubarb\Stem\Filters\AndGroup;
 use Rhubarb\Stem\Filters\Equals;
 use Rhubarb\Stem\Filters\GreaterThan;
 use Rhubarb\Stem\Filters\LessThan;
@@ -58,9 +59,9 @@ class Image extends Model
     {
         if( $this->Order > $to )
         {
-            foreach( Image::find( new GreaterThan( 'Order', $this->Order  ) ) as $image )
+            foreach( Image::find( new AndGroup( [ new GreaterThan( 'Order', $to, true ), new LessThan( 'Order', $this->Order, true ) ] ) ) as $image )
             {
-                $image->Order--;
+                $image->Order++;
                 $image->save();
             }
         }
@@ -70,9 +71,9 @@ class Image extends Model
         }
         else
         {
-            foreach( Image::find( new LessThan( 'Order', $this->Order ) ) as $image )
+            foreach( Image::find( new AndGroup( [ new LessThan( 'Order', $to, true ) , new GreaterThan( 'Order', $this->Order, true ) ] ) ) as $image )
             {
-                $image->Order++;
+                $image->Order--;
                 $image->save();
             }
         }

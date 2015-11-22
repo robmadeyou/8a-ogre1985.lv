@@ -16,11 +16,23 @@ bridge.prototype.attachEvents = function () {
 			group:'serialization',
 			delay:0,
 			change: function( event, ui ){
-				var index = ui.placeholder.index();
 				var image = $( event.toElement ).attr( 'iiid' );
-				var list = group.sortable("serialize").get();
-				console.log( list );
-				self.raiseServerEvent( 'ChangeImageID', image, index );
+				var ids = [];
+				$( group).children().each( function()
+				{
+					var val = $( this ).attr( 'iiid' );
+					if( val == undefined )
+					{
+						val = image;
+					}
+					ids.push( val );
+				});
+
+				self.raiseServerEvent( 'ChangeImageID', ids, function( data )
+					{
+						console.log( data )
+					}
+				);
 			}
 		} )
 
