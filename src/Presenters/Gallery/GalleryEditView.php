@@ -58,7 +58,7 @@ class GalleryEditView extends GalleryAddView
         parent::printViewContent();
 
         $html = new HtmlPageSettings();
-        $html->PageTitle = 'Pievienot vel bildes galerijā';
+        $html->PageTitle = 'Pievienot vēl bildes galerijā';
         ?>
             <div class="__container">
                 Bildes jau galerijā<br>

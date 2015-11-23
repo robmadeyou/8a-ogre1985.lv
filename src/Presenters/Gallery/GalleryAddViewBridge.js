@@ -29,7 +29,7 @@ bridge.prototype.attachEvents = function () {
 				});
 				console.log( group.sortable( "toArray" ) );
 
-				self.raiseServerEvent( 'ChangeImageID', ids, function( data )
+				self.raiseServerEvent( 'ChangeImageID', image, function( data )
 					{
 						//console.log( data )
 					}

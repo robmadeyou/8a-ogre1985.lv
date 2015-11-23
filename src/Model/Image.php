@@ -57,11 +57,12 @@ class Image extends Model
 
     public function moveOrder( $to )
     {
-        if( $this->Order > $to )
+        if( $this->Order < $to )
         {
-            foreach( Image::find( new AndGroup( [ new GreaterThan( 'Order', $to, true ), new LessThan( 'Order', $this->Order, true ) ] ) ) as $image )
+            $images = Image::find( new AndGroup( [ new GreaterThan( 'Order', $this->Order ), new LessThan( 'Order', $to, true ) ] ) );
+            foreach( $images as $image )
             {
-                $image->Order++;
+                $image->Order--;
                 $image->save();
             }
         }
@@ -71,9 +72,10 @@ class Image extends Model
         }
         else
         {
-            foreach( Image::find( new AndGroup( [ new LessThan( 'Order', $to, true ) , new GreaterThan( 'Order', $this->Order, true ) ] ) ) as $image )
+            $images = Image::find( new AndGroup( [ new LessThan( 'Order', $this->Order ), new GreaterThan( 'Order', $to, true ) ] ) );
+            foreach( $images as $image )
             {
-                $image->Order--;
+                $image->Order++;
                 $image->save();
             }
         }
