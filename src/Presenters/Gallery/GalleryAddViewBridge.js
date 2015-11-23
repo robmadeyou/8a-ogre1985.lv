@@ -13,7 +13,7 @@ bridge.prototype.attachEvents = function () {
 	});
 
 	var group = $( '#image-orders' ).sortable( {
-			group:'serialization',
+			key:'iiid',
 			delay:0,
 			change: function( event, ui ){
 				var image = $( event.toElement ).attr( 'iiid' );
@@ -27,10 +27,11 @@ bridge.prototype.attachEvents = function () {
 					}
 					ids.push( val );
 				});
+				console.log( group.sortable( "toArray" ) );
 
 				self.raiseServerEvent( 'ChangeImageID', ids, function( data )
 					{
-						console.log( data )
+						//console.log( data )
 					}
 				);
 			}

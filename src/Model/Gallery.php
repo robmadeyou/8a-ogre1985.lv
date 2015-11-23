@@ -13,6 +13,7 @@ use Rhubarb\Stem\Schema\Columns\DateTime;
 use Rhubarb\Stem\Schema\Columns\Integer;
 use Rhubarb\Stem\Schema\Columns\String;
 use Rhubarb\Stem\Schema\ModelSchema;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 
 class Gallery extends Model
 {
@@ -30,6 +31,7 @@ class Gallery extends Model
             new String( 'Title', 125 ),
             new Integer( 'DefaultImageID' ),
             new DateTime( 'CreatedAt' ),
+            new Integer( 'CreatedBy' ),
             new Boolean( 'Published' ),
             new Integer( 'Order' )
         );
@@ -43,6 +45,7 @@ class Gallery extends Model
         if( $this->isNewRecord() )
         {
             $this->CreatedAt = new DateTime( 'now' );
+            $this->CreatedBy = CustomLoginProvider::getLoggedInUser()->UniqueIdentifier;
         }
 
         parent::beforeSave();

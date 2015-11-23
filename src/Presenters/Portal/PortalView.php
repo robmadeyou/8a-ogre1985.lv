@@ -53,7 +53,7 @@ class PortalView extends JQueryView
                         }
                         ?>
                     </div>
-
+                    <div class="__clear-floats"></div>
                     <div class="__clear-floats"></div>
                 </div>
             </div>
@@ -75,6 +75,7 @@ class PortalView extends JQueryView
                         }
                         ?>
                     </div>
+                    <div class="__clear-floats"></div>
                 </div>
             </div>
         </div>

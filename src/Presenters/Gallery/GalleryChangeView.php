@@ -7,6 +7,7 @@ use Rhubarb\Leaf\Presenters\Application\Table\Table;
 use Rhubarb\Leaf\Presenters\Controls\Buttons\Button;
 use Rhubarb\Leaf\Views\HtmlView;
 use Your\WebApp\Controllers\TableColumns\FixedWidthColumn;
+use Your\WebApp\LoginProviders\CustomLoginProvider;
 use Your\WebApp\Model\Gallery;
 
 class GalleryChangeView extends HtmlView
