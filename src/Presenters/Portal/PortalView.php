@@ -4,6 +4,7 @@ namespace Your\WebApp\Presenters\Portal;
 
 use Rhubarb\Crown\Settings\HtmlPageSettings;
 use Rhubarb\Leaf\Views\JQueryView;
+use Rhubarb\Stem\Filters\Equals;
 use Rhubarb\Stem\Repositories\MySql\MySql;
 use Your\WebApp\Controllers\GalleryController\GalleryPresenter;
 use Your\WebApp\Controllers\ImagePanorama\ImagePanorama;
@@ -18,7 +19,7 @@ class PortalView extends JQueryView
     {
         parent::printViewContent();
 
-        $discussions = Gallery::find( )->addSort( 'Order' )->setRange( 0, 6 );
+        $discussions = Gallery::find( new Equals( 'Enabled', 1 ) )->addSort( 'Order' )->setRange( 0, 6 );
         $users = CustomUser::find()->addSort( 'UserID', false )->setRange( 0, 6 );
 
         $sql = MySql::executeStatement( 'SELECT Source FROM tblImage ORDER BY RAND() LIMIT 6' );
