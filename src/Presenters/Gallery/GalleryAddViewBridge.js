@@ -15,23 +15,22 @@ bridge.prototype.attachEvents = function () {
 	var group = $( '#image-orders' ).sortable( {
 			key:'iiid',
 			delay:0,
-			change: function( event, ui ){
-				var image = $( event.toElement ).attr( 'iiid' );
+			drop:function()
+			{
+				alert( 'aaa' );
+			},
+			update: function( event, ui ){
 				var ids = [];
-				$( group).children().each( function()
+				$( group ).children().each( function()
 				{
+					console.log( 'aaa' );
 					var val = $( this ).attr( 'iiid' );
-					if( val == undefined )
-					{
-						val = image;
-					}
 					ids.push( val );
 				});
-				console.log( group.sortable( "toArray" ) );
 
-				self.raiseServerEvent( 'ChangeImageID', image, function( data )
+				self.raiseServerEvent( 'ChangeImageID', ids, function( data )
 					{
-						//console.log( data )
+						console.log( data )
 					}
 				);
 			}

@@ -67,7 +67,7 @@ class GalleryEditView extends GalleryAddView
                         $images = Image::find( new Equals( 'GalleryID', $this->getData( 'GalleryID' ) ) )->addSort( 'Order' );
                         foreach( $images as $image )
                         {
-                            print '<div id="iiid_' . $image->ImageID . '"><img iiid="' . $image->ImageID . '" src="' . $image->Source . ' "></div>';
+                            print '<div iiid="' . $image->ImageID . '"><img iiid="' . $image->ImageID . '" src="' . $image->Source . ' "></div>';
                         }
                     ?>
                 </div>

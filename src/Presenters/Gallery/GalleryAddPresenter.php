@@ -59,7 +59,7 @@ class GalleryAddPresenter extends ModelFormPresenter
                 $index++;
             }
             return $array;
-            /*
+               /*
             $image = new Image( $imageID );
             $image->moveOrder( $index );*/
         } );
