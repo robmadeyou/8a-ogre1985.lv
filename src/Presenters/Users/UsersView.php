@@ -11,7 +11,7 @@ class UsersView extends HtmlView
 {
     protected function printViewContent()
     {
-        $users = CustomUser::find()->addSort( 'UserID', false )->setRange( 0, 6 );
+        $users = CustomUser::find()->addSort( 'UserID', false );
 
 
         $html = new HtmlPageSettings();
