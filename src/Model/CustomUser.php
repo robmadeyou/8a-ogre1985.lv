@@ -25,7 +25,7 @@ class CustomUser extends User
 
     public function getImage()
     {
-        if( $this->modelData[ 'Image' ] != "" && file_exists( $this->modelData[ 'Image' ] ) )
+        if( $this->modelData[ 'Image' ] != "" && file_exists( '.' . $this->modelData[ 'Image' ] ) )
         {
             return $this->modelData[ 'Image' ];
         }
