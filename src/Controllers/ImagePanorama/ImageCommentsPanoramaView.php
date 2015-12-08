@@ -66,54 +66,49 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="__container">
-                    <div class="row">
-                        <div class="col-xs-6 center-align">
-                            <a href="/img/?g=<?= $this->images[0]->ImageID ?>" id="downloadButton" ><i class="fa fa-download"></i> Lejuplādēd </a>
-                        </div>
-                        <div class="col-xs-6 center-align">
-                            <a href="#" class="" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload"></i> Pievienot bilde(s)</a>
-                        </div>
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Pievienot bildes galerijai</h4>
-                                    </div>
-                                    <div id="dropzone">
-                                        <div action="/portal/gallery/<?= $this->images[ 0 ]->GalleryID ?>/?a=<?= $this->images[ 0 ]->GalleryID ?>" class="dropzone" id="image-upload">
-                                            <div class="dz-message">Bildes parādisies šeit<br />
-                                            </div>
+            <div class="__container">
+                <div class="row">
+                    <div class="col-xs-6 center-align">
+                        <a href="/img/?g=<?= $this->images[0]->ImageID ?>" id="downloadButton" ><i class="fa fa-download"></i> Lejuplādēd </a>
+                    </div>
+                    <div class="col-xs-6 center-align">
+                        <a href="#" class="" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload"></i> Pievienot bilde(s)</a>
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Pievienot bildes galerijai</h4>
+                                </div>
+                                <div id="dropzone">
+                                    <div action="/portal/gallery/<?= $this->images[ 0 ]->GalleryID ?>/?a=<?= $this->images[ 0 ]->GalleryID ?>" class="dropzone" id="image-upload">
+                                        <div class="dz-message">Bildes parādisies šeit<br />
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-mode-button">Saglabāt!</button>
-                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-mode-button">Saglabāt!</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="comments-section col-md-8">
-                <div class="comments-bound __container" style="min-height: 46px;">
-                    <?php
-                        self::getCommentsForImageID( $this->images[0]->ImageID );
-                    ?>
-                </div>
-                <div class="comments-section-new __container">
-                    <div class="comment-outer-image">
-                        <img src="<?= $user->Image ?>">
-                    </div>
-                    <textarea id="comment-input"></textarea>
-                    <button type="submit" id="comment-input-submit">Pievienot</button>
-                    <div class="__clear-floats"></div>
-                </div>
+            <div class="comments-bound __container" style="min-height: 46px;">
+                <?php
+                    self::getCommentsForImageID( $this->images[0]->ImageID );
+                ?>
             </div>
-
+            <div class="comments-section-new __container">
+                <div class="comment-outer-image">
+                    <img src="<?= $user->Image ?>">
+                </div>
+                <textarea id="comment-input"></textarea>
+                <button type="submit" id="comment-input-submit">Pievienot</button>
+                <div class="__clear-floats"></div>
+            </div>
         </div>
         <?php
     }
