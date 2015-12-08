@@ -97,9 +97,6 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
                         </div>
                     </div>
                 </div>
-                <div class="__container center-align uploaded-by-section" style="padding-top: 6px;">
-                    <?= $this->getUploadedByInfo( $firstImg ) ?>
-                </div>
             </div>
             <div class="comments-section col-md-8">
                 <div class="comments-bound __container" style="min-height: 46px;">
