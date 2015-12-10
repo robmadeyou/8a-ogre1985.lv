@@ -14,8 +14,7 @@ class GalleryEditPresenter extends GalleryAddPresenter
 {
     protected function createView()
     {
-        $gallery = $this->getData( 'CreatedBy' );
-        if( !CustomLoginProvider::isAdmin() && !$gallery == CustomLoginProvider::getLoggedInUser()->UniqueIdentifier )
+        if( !CustomLoginProvider::isAdmin() )
         {
             throw new ForceResponseException( new RedirectResponse( '/' ) );
         }

@@ -33,7 +33,7 @@ class GalleryItemView extends CrudView
         {
             $html->PageTitle = "&nbsp;";
         }
-        $html->PageRightTitle = '<a href="edit/" class="btn btn-default btn-sm">Mainit</a>';
+        $html->PageRightTitle = '<a href="edit/" class="btn btn-default btn-sm">Mainīt</a>';
 
         print $this->presenters[ 'SlideView' ];
     }
