@@ -34,7 +34,19 @@ bridge.prototype.attachEvents = function () {
 					}
 				);
 			}
-		} )
+		} );
+
+	$( '.delete-image' ).click( function()
+	{
+		var imgID = $( this ).parent().attr( 'iiid' );
+		self.raiseServerEvent( 'DeleteImage', $imgID, function( response )
+		{
+			if( response )
+			{
+				$( this ).parent().remove();
+			}
+		})
+	});
 
 };
 

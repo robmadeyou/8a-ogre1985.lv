@@ -361,8 +361,8 @@ form
 
 .portal-image-gallery
 {
-    height: 34vw;
-    max-height: 520px;
+    height: 60vw;
+    max-height: 800px;
     overflow: hidden;
 }
 
@@ -390,8 +390,8 @@ form
 {
     position: absolute;
     max-width: none!important;
-    height: 34vw;
-    max-height: 520px;
+    height: 60vw;
+    max-height: 800px;
 }
 
 .image-panorama-navigation
@@ -636,4 +636,16 @@ form
 #image-orders div img {
     height: 100%;
     max-width: 150px;
+}
+
+.image-existing-container
+{
+    position: relative;
+}
+
+.image-delete
+{
+    position: absolute;
+    right: 0;
+    top: 0;
 }
