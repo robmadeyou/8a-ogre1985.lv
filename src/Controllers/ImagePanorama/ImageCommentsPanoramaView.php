@@ -69,7 +69,7 @@ class ImageCommentsPanoramaView extends ImagePanoramaView
             <div class="__container">
                 <div class="row">
                     <div class="col-xs-6 center-align">
-                        <a href="/img/?g=<?= $this->images[0]->ImageID ?>" id="downloadButton" ><i class="fa fa-download"></i> Lejuplādēd </a>
+                        <a href="/img/?g=<?= $this->images[0]->ImageID ?>" id="downloadButton" ><i class="fa fa-download"></i> Lejuplādēt </a>
                     </div>
                     <div class="col-xs-6 center-align">
                         <a href="#" class="" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload"></i> Pievienot bilde(s)</a>
