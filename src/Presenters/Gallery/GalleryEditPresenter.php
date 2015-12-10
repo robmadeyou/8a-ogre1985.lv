@@ -26,7 +26,7 @@ class GalleryEditPresenter extends GalleryAddPresenter
 
     protected function configureView()
     {
-        $this->view->raiseEvent( 'DeleteImage', function( $imgID )
+        $this->view->attachEventHandler( 'DeleteImage', function( $imgID )
         {
             try
             {
